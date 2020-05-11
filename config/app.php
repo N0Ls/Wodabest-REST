@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -81,6 +81,11 @@ return [
     */
 
     'locale' => 'en',
+
+    'locales' => [
+        'en' => 'EN',
+        'fr' => 'FR'
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -166,8 +171,6 @@ return [
          * Package Service Providers...
          */
 
-        Collective\Html\HtmlServiceProvider::class,
-
         /*
          * Application Service Providers...
          */
@@ -229,12 +232,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        /*
-         * Package Aliases...
-         */
-
-        'Form' => Collective\Html\FormFacade::class,
-        'Html' => Collective\Html\HtmlFacade::class,
     ],
 
 ];
