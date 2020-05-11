@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,39 +14,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => 'auth:api'], function () {
-    Route::post('logout', 'Auth\LoginController@logout');
-
-    Route::get('/user', 'Auth\UserController@current');
-    Route::get('/users/names', 'Auth\UserController@names');
-
-    Route::patch('settings/profile', 'Settings\ProfileController@update');
-    Route::patch('settings/password', 'Settings\PasswordController@update');
-
-    Route::get('/projects', 'ImageController@index');
-    Route::get('/projects/{id}', 'ImageController@getProject');
-    Route::post('/projects', 'ImageController@store');
-    Route::patch('/projects/{project}', 'ImageController@update');
-    Route::delete('/projects/{project}', 'ImageController@destroy');
-    Route::post('/projects/ranking/{category}', 'ImageController@getRankedProjects');
-
-    Route::get('/categories', 'CategoryController@index');
-
-    Route::get('/games', 'GameController@index');
-    Route::post('/games/init/{category}', 'GameController@init');
-    Route::patch('/games/update', 'GameController@update');
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
 });
 
-Route::group(['middleware' => 'guest:api'], function () {
-    Route::post('login', 'Auth\LoginController@login');
-    Route::post('register', 'Auth\RegisterController@register');
+// Home
+Route::get('api/home/init', ['uses' => 'API\HomeController@init', 'as' => 'api/home/init']);
 
-    Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
-    Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+// Game
+Route::get('api/game/init', ['uses' => 'API\GameController@init', 'as' => 'api/game/init']);
+Route::put('api/game/update', ['uses' => 'API\GameController@update', 'as' => 'api/game/update']);
 
-    Route::post('email/verify/{user}', 'Auth\VerificationController@verify')->name('verification.verify');
-    Route::post('email/resend', 'Auth\VerificationController@resend');
+// Image
+Route::get('api/images/showAll', ['uses' => 'API\ImageController@showAll', 'as' => 'api/images/showAll']);
+Route::get('api/images/ranking/showRanked', ['uses' => 'API\ImageController@showRanked', 'as' => 'api/images/ranking/showRanked']);
+Route::get('api/images/user/showUser', ['uses' => 'API\ImageController@showUser', 'as' => 'api/images/user/showUser']);
+Route::get('api/images/show/{image_id}', ['uses' => 'API\ImageController@show', 'as' => 'api/images/show/{image_id}']);
+Route::get('api/images/edit/{image_id}', ['uses' => 'API\ImageController@edit', 'as' => 'api/images/edit/{image_id}']);
+Route::put('api/images/update/{image_id}', ['uses' => 'API\ImageController@update', 'as' => 'api/images/update/{image_id}']);
+Route::get('api/images/upload/upload', ['uses' => 'API\ImageController@upload', 'as' => 'api/images/upload/upload']);
+Route::post('api/images/upload/store', ['uses' => 'API\ImageController@store', 'as' => 'api/images/upload/store']);
 
-    Route::post('oauth/{driver}', 'Auth\OAuthController@redirectToProvider');
-    Route::get('oauth/{driver}/callback', 'Auth\OAuthController@handleProviderCallback')->name('oauth.callback');
-});
+//Route::delete('api/images/delete/{image_id}', ['uses' => 'API\ImageController@delete', 'as' => 'api/images/delete/{image_id}']);
