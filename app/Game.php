@@ -12,6 +12,8 @@ class Game extends Model
         'winner',
         'loser'
     ];
+
+    // EGO type algorithm
     
     /**
      * Calculate the expected score or outcome of the project
