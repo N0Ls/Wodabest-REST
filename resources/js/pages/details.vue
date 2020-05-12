@@ -1,6 +1,7 @@
 <template>
   <div>
-    <page-title :title="$t('project_details')"></page-title>
+    <!--<page-title :title="$t('project_details')"></page-title>-->
+    <page-title :title="project.title"></page-title>
     <details-view :project="project"></details-view>
   </div>
 </template>

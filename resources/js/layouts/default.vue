@@ -1,7 +1,7 @@
 <template>
-  <div class="main-layout">
+  <div class="main-layout bg-light">
     <navbar />
-    <div class="container mt-4">
+    <div class="main-content container bg-light">
       <child />
     </div>
     <v-footer />

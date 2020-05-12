@@ -17,7 +17,7 @@ export default {
     canSuccess: true,
     duration: 3000,
     height: '3px',
-    color: '#77b6ff',
+    color: '#00c9a7',
     failedColor: 'red'
   }),
 

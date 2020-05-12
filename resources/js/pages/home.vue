@@ -1,22 +1,103 @@
 <template>
-  <div>
-    <page-title :title="$t('home')"></page-title>
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-12 order-2 order-lg-1">
+          <div class="row align-items-center">
+            <div class="col-lg-6 col-md-6 mt-4 mt-lg-0 pt-2 pt-lg-0">
+              <div
+                class="rounded text-center shadow-large position-relative overflow-hidden"
+              >
+                <img
+                  src="/img/upload/behance-design-32.jpg"
+                  class="img-fluid"
+                />
+              </div>
+            </div>
 
-    <p>{{ $t("Hello") + " " + user.name }}</p>
-    <p>{{ countCategories + " " + $t("categories") }}</p>
-    <p>{{ countUsers + " " + $t("users") }}</p>
-    <p>{{ countProjects + " " + $t("projects") }}</p>
-    <p>{{ countGames + " " + $t("games_played") }}</p>
-    <about :text="$t('introduction_text')"></about>
+            <div class="col-lg-6 col-md-6">
+              <div class="row">
+                <div class="col-lg-12 col-md-12 mt-4 mt-lg-0 pt-2 pt-lg-0">
+                  <div
+                    class="rounded text-center shadow-large position-relative overflow-hidden"
+                  >
+                    <img
+                      src="/img/upload/behance-design-28.jpg"
+                      class="img-fluid"
+                    />
+                  </div>
+                </div>
 
-    <v-button
-      ><router-link :to="{ name: 'game' }">
-        {{ $t("play") }}
-      </router-link></v-button
-    >
+                <div class="col-lg-12 col-md-12 mt-4 pt-2">
+                  <div
+                    class="rounded text-center shadow-large position-relative overflow-hidden"
+                  >
+                    <img
+                      src="/img/upload/behance-design-23.jpg"
+                      class="img-fluid"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-    <a @click="$router.go(-1)">{{ $t("back") }}</a>
-  </div>
+        <div class="col-lg-6 col-md-12 order-1 order-lg-2">
+          <div class="section-title ml-lg-5">
+            <h6 class="text-muted">
+              {{ $t("Hello") + " " + user.name + " !" }}
+            </h6>
+            <h2 class="mb-4">
+              <span class="font-weight-bold">{{ name }}</span> {{ $t("today") }}
+            </h2>
+            <p class="text-muted">
+              The most well-known dummy text is the 'Lorem Ipsum', which is said
+              to have originated in the 16th century. Lorem Ipsum is composed in
+              a pseudo-Latin language which more or less corresponds to 'proper'
+              Latin.
+            </p>
+
+            <div class="row justify-content-center" id="counter">
+              <div class="col-md-4 col-6 mt-4">
+                <div class="counter-box text-center">
+                  <h3 class="counter-value mt-3">{{ countUsers }}</h3>
+                  <h6 class="counter-head font-weight-normal">
+                    {{ $t("users") }}
+                  </h6>
+                </div>
+              </div>
+
+              <div class="col-md-4 col-6 mt-4">
+                <div class="counter-box text-center">
+                  <h3 class="counter-value mt-3">{{ countProjects }}</h3>
+                  <h6 class="counter-head font-weight-normal">
+                    {{ $t("projects") }}
+                  </h6>
+                </div>
+              </div>
+
+              <div class="col-md-4 col-6 mt-4">
+                <div class="counter-box text-center">
+                  <h3 class="counter-value mt-3">{{ countGames }}</h3>
+                  <h6 class="counter-head font-weight-normal">
+                    {{ $t("games_played") }}
+                  </h6>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 mb-4 text-center mt-4">
+              <router-link :to="{ name: 'game' }" class="navbar-brand">
+                <v-button class="btn btn-primary">
+                  {{ $t("play") }}
+                </v-button>
+              </router-link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -24,6 +105,10 @@ import { mapGetters } from "vuex";
 
 export default {
   middleware: "auth",
+
+  data: () => ({
+    name: window.config.appName
+  }),
 
   computed: {
     ...mapGetters({ user: "auth/user" }),

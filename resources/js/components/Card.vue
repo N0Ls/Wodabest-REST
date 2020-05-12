@@ -1,6 +1,6 @@
 <template>
-  <div class="card">
-    <div v-if="title" class="card-header">
+  <div class="card shadow-large">
+    <div v-if="title" class="card-header bg-light">
       {{ title }}
     </div>
 

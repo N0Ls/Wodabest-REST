@@ -1,128 +1,132 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-white">
-    <div class="container">
-      <router-link
-        :to="{ name: user ? 'home' : 'welcome' }"
-        class="navbar-brand"
-      >
-        {{ appName }}
-      </router-link>
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-large">
+      <div class="container">
+        <router-link
+          :to="{ name: user ? 'home' : 'welcome' }"
+          class="navbar-brand"
+        >
+          <div class="nav-logo col-12">
+            <img src="/img/logo/wodabest-small.png" />
+          </div>
+        </router-link>
 
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarToggler"
-        aria-controls="navbarToggler"
-        aria-expanded="false"
-      >
-        <span class="navbar-toggler-icon" />
-      </button>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarToggler"
+          aria-controls="navbarToggler"
+          aria-expanded="false"
+        >
+          <span class="navbar-toggler-icon" />
+        </button>
 
-      <div id="navbarToggler" class="collapse navbar-collapse">
-        <ul class="navbar-nav">
-          <locale-dropdown />
-        </ul>
+        <div id="navbarToggler" class="collapse navbar-collapse">
+          <ul class="navbar-nav">
+            <locale-dropdown />
+          </ul>
 
-        <ul class="navbar-nav ml-auto">
-          <!-- Authenticated -->
-          <li v-if="user" class="nav-item">
-            <router-link
-              :to="{ name: 'home' }"
-              class="nav-link"
-              active-class="active"
-            >
-              {{ $t("home") }}
-            </router-link>
-          </li>
-          <li v-if="user" class="nav-item">
-            <router-link
-              :to="{ name: 'game' }"
-              class="nav-link"
-              active-class="active"
-            >
-              {{ $t("game") }}
-            </router-link>
-          </li>
-          <li v-if="user" class="nav-item">
-            <router-link
-              :to="{ name: 'images' }"
-              class="nav-link"
-              active-class="active"
-            >
-              {{ $t("gallery") }}
-            </router-link>
-          </li>
-          <li v-if="user" class="nav-item">
-            <router-link
-              :to="{ name: 'ranking' }"
-              class="nav-link"
-              active-class="active"
-            >
-              {{ $t("ranking") }}
-            </router-link>
-          </li>
-          <li v-if="user" class="nav-item">
-            <router-link
-              :to="{ name: 'upload' }"
-              class="nav-link"
-              active-class="active"
-            >
-              {{ $t("upload") }}
-            </router-link>
-          </li>
-          <li v-if="user" class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle text-dark"
-              href="#"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              {{ user.name }}
-            </a>
-            <div class="dropdown-menu">
+          <ul class="navbar-nav ml-auto">
+            <!-- Authenticated -->
+            <li v-if="user" class="nav-item">
               <router-link
-                :to="{ name: 'settings.profile' }"
-                class="dropdown-item pl-3"
+                :to="{ name: 'home' }"
+                class="nav-link"
+                active-class="active"
               >
-                <fa icon="cog" fixed-width />
-                {{ $t("settings") }}
+                {{ $t("home") }}
               </router-link>
-
-              <div class="dropdown-divider" />
-              <a href="#" class="dropdown-item pl-3" @click.prevent="logout">
-                <fa icon="sign-out-alt" fixed-width />
-                {{ $t("logout") }}
+            </li>
+            <li v-if="user" class="nav-item">
+              <router-link
+                :to="{ name: 'game' }"
+                class="nav-link"
+                active-class="active"
+              >
+                {{ $t("game") }}
+              </router-link>
+            </li>
+            <li v-if="user" class="nav-item">
+              <router-link
+                :to="{ name: 'images' }"
+                class="nav-link"
+                active-class="active"
+              >
+                {{ $t("gallery") }}
+              </router-link>
+            </li>
+            <li v-if="user" class="nav-item">
+              <router-link
+                :to="{ name: 'ranking' }"
+                class="nav-link"
+                active-class="active"
+              >
+                {{ $t("ranking") }}
+              </router-link>
+            </li>
+            <li v-if="user" class="nav-item">
+              <router-link
+                :to="{ name: 'upload' }"
+                class="nav-link"
+                active-class="active"
+              >
+                {{ $t("upload") }}
+              </router-link>
+            </li>
+            <li v-if="user" class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle text-dark"
+                href="#"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                {{ user.name }}
               </a>
-            </div>
-          </li>
-          <!-- Guest -->
-          <template v-else>
-            <li class="nav-item">
-              <router-link
-                :to="{ name: 'login' }"
-                class="nav-link"
-                active-class="active"
-              >
-                {{ $t("login") }}
-              </router-link>
+              <div class="dropdown-menu bg-light">
+                <router-link
+                  :to="{ name: 'settings.profile' }"
+                  class="dropdown-item pl-3"
+                >
+                  <fa icon="cog" fixed-width />
+                  {{ $t("settings") }}
+                </router-link>
+
+                <div class="dropdown-divider" />
+                <a href="#" class="dropdown-item pl-3" @click.prevent="logout">
+                  <fa icon="sign-out-alt" fixed-width />
+                  {{ $t("logout") }}
+                </a>
+              </div>
             </li>
-            <li class="nav-item">
-              <router-link
-                :to="{ name: 'register' }"
-                class="nav-link"
-                active-class="active"
-              >
-                {{ $t("register") }}
-              </router-link>
-            </li>
-          </template>
-        </ul>
+            <!-- Guest -->
+            <template v-else>
+              <li class="nav-item">
+                <router-link
+                  :to="{ name: 'login' }"
+                  class="nav-link"
+                  active-class="active"
+                >
+                  {{ $t("login") }}
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link
+                  :to="{ name: 'register' }"
+                  class="nav-link"
+                  active-class="active"
+                >
+                  {{ $t("register") }}
+                </router-link>
+              </li>
+            </template>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </div>
 </template>
 
 <script>

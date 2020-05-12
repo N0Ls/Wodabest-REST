@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-lg-8 m-auto">
       <card :title="$t('verify_email')">
-        <form @submit.prevent="send" @keydown="form.onKeydown($event)">
+        <form class="login-form" @submit.prevent="send" @keydown="form.onKeydown($event)">
           <alert-success :form="form" :message="status" />
 
           <!-- Email -->

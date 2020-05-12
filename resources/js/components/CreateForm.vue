@@ -1,71 +1,93 @@
 <template>
-  <card :title="'Ajouter un projet'">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-8">
+        <div
+          class="card login-page bg-white rounded p-4 position-relative bg-whiter"
+        >
+          <div class="text-center">
+            <h5 class="mb-4 pb-2">{{ $t("add") }}</h5>
+          </div>
+          <form
+            @submit.prevent="addProject"
+            @keydown="form.onKeydown($event)"
+            class="login-form"
+          >
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group position-relative">
+                  <label
+                    >{{ $t("image") }} <span class="text-danger">*</span></label
+                  >
+                  <input
+                    @change="imageChanged"
+                    class="form-control"
+                    type="file"
+                    name="image"
+                  />
+                </div>
+              </div>
 
-    <form @submit.prevent="addProject" @keydown="form.onKeydown($event)">
+              <div class="col-12">
+                <div class="form-group position-relative">
+                  <label
+                    >{{ $t("title") }} <span class="text-danger">*</span></label
+                  >
+                  <input
+                    v-model="form.title"
+                    class="form-control"
+                    type="text"
+                    name="title"
+                  />
+                </div>
+              </div>
 
-      <!-- Image -->
-      <div class="form-group row">
-        <label class="col-md-3 col-form-label text-md-right">Image</label>
-        <div class="col-md-7">
-          <input @change="imageChanged" class="form-control" type="file" name="image" />
+              <div class="col-12">
+                <div class="form-group position-relative">
+                  <label
+                    >{{ $t("description") }}
+                    <span class="text-danger">*</span></label
+                  >
+                  <textarea
+                    v-model="form.description"
+                    class="form-control"
+                    type="text"
+                    name="description"
+                  />
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-group position-relative">
+                  <label
+                    >{{ $t("category") }}
+                    <span class="text-danger">*</span></label
+                  >
+                  <select class="form-control" v-model="form.category">
+                    <option disabled value="">{{
+                      $t("assign_category")
+                    }}</option>
+                    <option
+                      v-for="category in allCategories"
+                      :key="category.name"
+                    >
+                      {{ $t(category.slug) }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-12 mb-0">
+                <v-button class="btn btn-primary w-100" :loading="form.busy">
+                  {{ $t("upload") }}
+                </v-button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
-
-      <!-- Title -->
-      <div class="form-group row">
-        <label class="col-md-3 col-form-label text-md-right">{{ $t('title') }}</label>
-        <div class="col-md-7">
-          <input
-            v-model="form.title"
-            class="form-control"
-            type="text"
-            name="title"
-          />
-        </div>
-      </div>
-
-      <!-- Description -->
-      <div class="form-group row">
-        <label class="col-md-3 col-form-label text-md-right">{{ $t('description') }}</label>
-        <div class="col-md-7">
-          <textarea
-            v-model="form.description"
-            class="form-control"
-            type="text"
-            name="description"
-          />
-        </div>
-      </div>
-
-      <!-- Categories -->
-      <div class="form-group row">
-        <label class="col-md-3 col-form-label text-md-right">{{ $t('category') }}</label>
-        <div class="col-md-7">
-          <select class="form-control" v-model="form.category">
-            <option disabled value="">{{ $t('assign_category') }}</option>
-            <option v-for="category in allCategories" :key="category.name">
-              {{ $t(category.slug) }}
-            </option>
-          </select>
-        </div>
-      </div>
-
-      <div v-show="!(form.title && form.description && form.category && form.image)">
-        <div class="col-md-9 ml-md-auto">{{ $t('form_rule') }}</div>
-      </div>
-
-      <!-- Submit Button -->
-      <div v-show="form.title && form.description && form.category && form.image" class="form-group row">
-        <div class="col-md-9 ml-md-auto">
-          <v-button :loading="form.busy" type="success">
-            {{ $t('create') }}
-          </v-button>
-        </div>
-      </div>
-
-    </form>
-
-  </card>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -93,7 +115,7 @@ export default {
       return this.$store.getters["categories/allCategories"];
     }
   },
-  
+
   methods: {
     getAllCategories() {
       return this.$store.getters["categories/allCategories"];
@@ -106,7 +128,6 @@ export default {
       };
     },
     async addProject() {
-
       this.$store.dispatch("projects/addProject", {
         user_id: this.user.id,
         title: this.form.title,

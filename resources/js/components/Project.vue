@@ -1,36 +1,57 @@
 <template>
-  <div class="project">
-    <img :src="'/img/upload/' + project.filename" />
-    <div class="project-left">
-      <div v-if="user.id == owner">
-        <div v-if="!editing" @dblclick="editProject" class="project-label">
-          {{ title }}
-        </div>
-        <input
-          v-else
-          class="project-edit"
-          type="text"
-          v-model="title"
-          @blur="doneEdit"
-          @keyup.enter="doneEdit"
-          @keyup.esc="cancelEdit"
-          v-focus
-        />
-      </div>
-      <div v-else>
-        {{ title }}
-      </div>
-    </div>
-    <div>{{ $t("create_by") + " " + author }}</div>
-    <div @click="goTodetail(id)">
-      {{ $t("see_more") }}
-    </div>
+  <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2 branding">
     <div
-      v-if="user.id == owner"
-      class="remove-item"
-      @click="removeProject(project.id)"
+      class="shadow-large work-container work-modern position-relative d-block overflow-hidden rounded"
     >
-      {{ $t("delete") }}
+      <img
+        :src="'/img/upload/' + project.filename"
+        class="img-fluid"
+        alt="work-image"
+      />
+      <div class="overlay-work bg-dark"></div>
+      <div class="icons text-center">
+        <a
+          @click="goTodetail(id)"
+          class="cursor text-primary work-icon bg-white d-inline-block rounded-pill mfp-image"
+          ><i data-feather="camera" class="fea icon-sm"></i
+        ></a>
+      </div>
+      <div class="content p-3">
+        <div v-if="user.id == owner">
+          <h5
+            v-if="!editing"
+            @dblclick="editProject"
+            class="mb-0 text-white title"
+          >
+            {{ title }}
+          </h5>
+          <input
+            v-else
+            class="form-control"
+            type="text"
+            v-model="title"
+            @blur="doneEdit"
+            @keyup.enter="doneEdit"
+            @keyup.esc="cancelEdit"
+            v-focus
+          />
+        </div>
+        <div v-else>
+          <h5 class="mb-0 text-white title">
+            {{ title }}
+          </h5>
+        </div>
+        <h6 class="text-light tag mb-0">
+          {{ $t("create_by") + " " + author }}
+        </h6>
+        <div
+          v-if="user.id == owner"
+          class="remove-item"
+          @click="removeProject(project.id)"
+        >
+          {{ $t("delete") }}
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -81,7 +102,7 @@ export default {
   computed: mapGetters({
     user: "auth/user"
   }),
-  
+
   methods: {
     removeProject(id) {
       this.$store.dispatch("projects/deleteProject", id);

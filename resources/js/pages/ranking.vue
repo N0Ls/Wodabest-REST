@@ -1,6 +1,9 @@
 <template>
   <div>
-    <page-title :title="$t('ranking')"></page-title>
+    <page-title
+      :title="$t('ranking')"
+      :text="$t('Texte d\'introduction de la page')"
+    ></page-title>
     <ranked-projects-list></ranked-projects-list>
   </div>
 </template>

@@ -59,8 +59,9 @@ export const actions = {
     }
   },
 
-  updateUser ({ commit }, payload) {
-    commit(types.UPDATE_USER, payload)
+  updateUser (context, payload) {
+    context.commit(types.UPDATE_USER, payload)
+    context.dispatch("projects/retrieveProjects", null, {root:true});
   },
 
   async logout ({ commit }) {

@@ -1,20 +1,20 @@
 <template>
-  <div class="project">
+  <div class="todo-item">
 
     <img :src="'/img/upload/' + project.filename" />
 
-    <div class="project-left">
+    <div class="todo-item-left">
       <div v-if="user.id == owner">
         <div
           v-if="!editingTitle"
           @dblclick="editProjectTitle"
-          class="project-label"
+          class="todo-item-label"
         >
           {{ title }}
         </div>
         <input
           v-else
-          class="project-edit"
+          class="todo-item-edit"
           type="text"
           v-model="title"
           @blur="doneEditTitle"
@@ -28,18 +28,18 @@
       </div>
     </div>
 
-    <div class="project-left">
+    <div class="todo-item-left">
       <div v-if="user.id == owner">
         <div
           v-if="!editingDescription"
           @dblclick="editProjectDescription"
-          class="project-label"
+          class="todo-item-label"
         >
           {{ description }}
         </div>
         <input
           v-else
-          class="project-edit"
+          class="todo-item-edit"
           type="text"
           v-model="description"
           @blur="doneEditDescription"

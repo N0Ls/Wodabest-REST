@@ -125,6 +125,7 @@ export const actions = {
       })
       .then(response => {
         context.commit(types.ADD_PROJECT, response.data);
+        context.dispatch("updateFilter", "all");
         context.dispatch("retrieveProjects");
       })
       .catch(error => {
@@ -160,6 +161,7 @@ export const actions = {
       .delete("/api/projects/" + id)
       .then(response => {
         context.commit(types.DELETE_PROJECT, id);
+        context.dispatch("ranking/retrieveTopProjects", null, {root:true});
       })
       .catch(error => {
         console.log(error);

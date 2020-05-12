@@ -1,31 +1,46 @@
 <template>
-  <div class="row">
-    <div class="col-lg-8 m-auto">
-      <card :title="$t('reset_password')">
-        <form @submit.prevent="send" @keydown="form.onKeydown($event)">
-          <alert-success :form="form" :message="status" />
-
-          <!-- Email -->
-          <div class="form-group row">
-            <label class="col-md-3 col-form-label text-md-right">{{ $t('email') }}</label>
-            <div class="col-md-7">
-              <input v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }" class="form-control" type="email" name="email">
+<section class="mt-4 user-pages d-flex align-items-center">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-5 col-md-8">
+            <div class="card login-page rounded p-4 position-relative bg-whiter">
+              <div class="text-center">
+                <h5 class="mb-4 pb-2">{{ $t('email') }}</h5>
+              </div>
+              <form
+                @submit.prevent="send"
+                @keydown="form.onKeydown($event)"
+                class="login-form"
+              >
+              <alert-success :form="form" :message="status" />
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-group position-relative">
+                      <label
+                        >{{ $t("email")
+                        }} <span class="text-danger">*</span></label
+                      >
+                      <input v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }" class="form-control" type="email" name="email">
               <has-error :form="form" field="email" />
-            </div>
-          </div>
+                    </div>
+                  </div>
 
-          <!-- Submit Button -->
-          <div class="form-group row">
-            <div class="col-md-9 ml-md-auto">
-              <v-button :loading="form.busy">
-                {{ $t('send_password_reset_link') }}
-              </v-button>
+                  <div class="col-12 mb-0">
+                    <v-button
+                      class="btn btn-primary w-100"
+                      :loading="form.busy"
+                    >
+                      {{ $t('send_password_reset_link') }}
+                    </v-button>
+                  </div>
+
+                </div>
+              </form>
             </div>
           </div>
-        </form>
-      </card>
-    </div>
-  </div>
+        </div>
+      </div>
+    </section>
 </template>
 
 <script>

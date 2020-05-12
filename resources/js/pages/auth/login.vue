@@ -1,97 +1,162 @@
 <template>
-  <div class="row">
-    <div class="col-lg-8 m-auto">
-      <card :title="$t('login')">
-        <form @submit.prevent="login" @keydown="form.onKeydown($event)">
-          <!-- Email -->
-          <div class="form-group row">
-            <label class="col-md-3 col-form-label text-md-right">{{ $t('email') }}</label>
-            <div class="col-md-7">
-              <input v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }" class="form-control" type="email" name="email">
-              <has-error :form="form" field="email" />
-            </div>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-12 order-2 order-lg-1 mt-5 mt-lg-0">
+        <div class="section-title mr-lg-5">
+          <h6 class="text-muted">
+            {{ $t("a_figure") }}
+          </h6>
+          <h2 class="mb-4">
+            <span class="font-weight-bold">500 000 </span>{{ $t('users') }}
+          </h2>
+          <p class="text-muted">
+            Ils nous font confiance chaque jour pour mettre en avant et en
+            relation leurs projets.
+          </p>
+          <p class="text-muted">
+            Ils partagent chaque jour leur amour de l'art et de la création.
+          </p>
+          <p class="text-muted">
+            Ils ont chaque jour l'envie de voir leur talent grandir.
+          </p>
+          <p class="text-muted">
+            Envie de faire partie de cette belle famille ?
+          </p>
+          <h4 class="text-dark">Rejoignez Wodabest !</h4>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12 order-1 order-lg-2">
+        <div
+          class="card login-page rounded shadow-large p-4 position-relative bg-light"
+        >
+          <div class="text-center">
+            <h5 class="mb-4 pb-2">{{ $t("login") }}</h5>
           </div>
+          <form
+            @submit.prevent="login"
+            @keydown="form.onKeydown($event)"
+            class="login-form"
+          >
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group position-relative">
+                  <label
+                    >{{ $t("email") }} <span class="text-danger">*</span></label
+                  >
+                  <input
+                    required=""
+                    v-model="form.email"
+                    :class="{ 'is-invalid': form.errors.has('email') }"
+                    class="form-control"
+                    type="email"
+                    name="email"
+                  />
+                  <has-error :form="form" field="email" />
+                </div>
+              </div>
 
-          <!-- Password -->
-          <div class="form-group row">
-            <label class="col-md-3 col-form-label text-md-right">{{ $t('password') }}</label>
-            <div class="col-md-7">
-              <input v-model="form.password" :class="{ 'is-invalid': form.errors.has('password') }" class="form-control" type="password" name="password">
-              <has-error :form="form" field="password" />
+              <div class="col-12">
+                <div class="form-group position-relative">
+                  <label
+                    >{{ $t("password") }}
+                    <span class="text-danger">*</span></label
+                  >
+                  <input
+                    v-model="form.password"
+                    :class="{ 'is-invalid': form.errors.has('password') }"
+                    class="form-control"
+                    type="password"
+                    name="password"
+                    required=""
+                  />
+                  <has-error :form="form" field="password" />
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="d-flex justify-content-between">
+                  <div class="form-group d-inline-block">
+                    <div class="custom-control custom-checkbox">
+                      <checkbox v-model="remember" name="remember">
+                        {{ $t("remember_me") }}
+                      </checkbox>
+                    </div>
+                  </div>
+                  <router-link
+                    :to="{ name: 'password.request' }"
+                    class="small ml-auto my-auto"
+                  >
+                    <div class="forgot-pass mb-0">
+                      <p class="text-dark font-weight-bold">
+                        {{ $t("forgot_password") }}
+                      </p>
+                    </div>
+                  </router-link>
+                </div>
+              </div>
+
+              <div class="col-12 mb-0">
+                <v-button class="btn btn-primary w-100" :loading="form.busy">
+                  {{ $t("login") }}
+                </v-button>
+              </div>
+
+              <div class="col-12 text-center">
+                <p class="mb-0 mt-3">
+                  <small class="text-dark mr-2">{{ $t("not_account") }}</small>
+                  <router-link
+                    :to="{ name: 'register' }"
+                    class="small ml-auto my-auto"
+                  >
+                    <a class="text-dark font-weight-bold">{{
+                      $t("register")
+                    }}</a>
+                  </router-link>
+                </p>
+              </div>
             </div>
-          </div>
-
-          <!-- Remember Me -->
-          <div class="form-group row">
-            <div class="col-md-3" />
-            <div class="col-md-7 d-flex">
-              <checkbox v-model="remember" name="remember">
-                {{ $t('remember_me') }}
-              </checkbox>
-
-              <router-link :to="{ name: 'password.request' }" class="small ml-auto my-auto">
-                {{ $t('forgot_password') }}
-              </router-link>
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <div class="col-md-7 offset-md-3 d-flex">
-              <!-- Submit Button -->
-              <v-button :loading="form.busy">
-                {{ $t('login') }}
-              </v-button>
-
-              <!-- GitHub Login Button -->
-              <login-with-github />
-            </div>
-          </div>
-        </form>
-      </card>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import Form from 'vform'
-import LoginWithGithub from '~/components/LoginWithGithub'
+import Form from "vform";
 
 export default {
-  middleware: 'guest',
+  middleware: "guest",
 
-  components: {
-    LoginWithGithub
-  },
-
-  metaInfo () {
-    return { title: this.$t('login') }
+  metaInfo() {
+    return { title: this.$t("login") };
   },
 
   data: () => ({
     form: new Form({
-      email: '',
-      password: ''
+      email: "",
+      password: ""
     }),
     remember: false
   }),
 
   methods: {
-    async login () {
+    async login() {
       // Submit the form.
-      const { data } = await this.form.post('/api/login')
+      const { data } = await this.form.post("/api/login");
 
       // Save the token.
-      this.$store.dispatch('auth/saveToken', {
+      this.$store.dispatch("auth/saveToken", {
         token: data.token,
         remember: this.remember
-      })
+      });
 
       // Fetch the user.
-      await this.$store.dispatch('auth/fetchUser')
+      await this.$store.dispatch("auth/fetchUser");
 
       // Redirect home.
-      this.$router.push({ name: 'home' })
+      this.$router.push({ name: "home" });
     }
   }
-}
+};
 </script>
