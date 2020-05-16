@@ -1,6 +1,9 @@
 <template>
   <div>
-    <page-title :title="$t('gallery')"></page-title>
+    <page-title
+      :title="$t('gallery')"
+      :text="$t('gallery_introduction')"
+    ></page-title>
     <projects-list></projects-list>
   </div>
 </template>

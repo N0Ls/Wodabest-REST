@@ -1,6 +1,9 @@
 <template>
   <div>
-    <page-title :title="$t('game')"></page-title>
+    <page-title
+      :title="$t('game')"
+      :text="$t('game_intro')"
+    ></page-title>
     <game-view></game-view>
   </div>
 </template>

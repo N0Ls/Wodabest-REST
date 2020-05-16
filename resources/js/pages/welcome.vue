@@ -23,11 +23,7 @@
                 </router-link>
               </div>
               <p class="text-muted para-desc mx-auto mb-0">
-                La plateforme de partage de vos travaux artistiques, créatifs,
-                inventifs. Un jeu basé sur l'<span class="text-dark"
-                  >algorithme ELO</span
-                >
-                pour vous ...
+                {{ $t('welcome_introduction') }}
               </p>
             </div>
           </div>
@@ -39,15 +35,13 @@
               class="feature feature-transition shadow-large p-4 rounded text-left"
             >
               <div class="icon text-center rounded-circle">
-                <i
-                  data-feather="aperture"
-                  class="fea icon-m-md feature-icon text-primary"
-                ></i>
+                <img
+                  src="img/icons/gallery.svg"
+                />
               </div>
               <h5 class="mt-2">{{ $t("gallery") }}</h5>
               <p class="text-muted mb-0">
-                It seems that only fragments of the original text remain in the
-                Lorem Ipsum texts used today
+                {{ $t('welcome_gallery_introduction') }}
               </p>
               <div class="mt-3 text-right">
                 <router-link
@@ -55,9 +49,11 @@
                   class="nav-link"
                   active-class="active"
                 >
-                  <a class="btn btn-icon btn-pills btn-outline-primary"
-                    ><i data-feather="arrow-right" class="fea icon-sm"></i
-                  ></a>
+                  <a class="btn btn-icon btn-pills btn-outline-primary">
+                    <img
+                      src="img/icons/chevron-right.svg"
+                    />
+                  </a>
                 </router-link>
               </div>
             </div>
@@ -68,15 +64,13 @@
               class="feature feature-transition shadow-large p-4 rounded text-left"
             >
               <div class="icon text-center rounded-circle">
-                <i
-                  data-feather="linkedin"
-                  class="fea icon-m-md feature-icon text-primary"
-                ></i>
+                <img
+                      src="img/icons/ranking.svg"
+                    />
               </div>
               <h5 class="mt-2">{{ $t("ranking") }}</h5>
               <p class="text-muted mb-0">
-                It seems that only fragments of the original text remain in the
-                Lorem Ipsum texts used today
+                {{ $t('welcome_ranking_introduction') }}
               </p>
               <div class="mt-3 text-right">
                 <router-link
@@ -85,8 +79,9 @@
                   active-class="active"
                 >
                   <a class="btn btn-icon btn-pills btn-outline-primary"
-                    ><i data-feather="arrow-right" class="fea icon-sm"></i
-                  ></a>
+                    ><img
+                      src="img/icons/chevron-right.svg"
+                  /></a>
                 </router-link>
               </div>
             </div>
@@ -97,15 +92,13 @@
               class="feature feature-transition shadow-large p-4 rounded text-left"
             >
               <div class="icon text-center rounded-circle">
-                <i
-                  data-feather="command"
-                  class="fea icon-m-md feature-icon text-primary"
-                ></i>
+                <img
+                      src="img/icons/upload.svg"
+                    />
               </div>
               <h5 class="mt-2">{{ $t("upload") }}</h5>
               <p class="text-muted mb-0">
-                It seems that only fragments of the original text remain in the
-                Lorem Ipsum texts used today
+                {{ $t('welcome_upload_introduction') }}
               </p>
               <div class="mt-3 text-right">
                 <router-link
@@ -114,8 +107,9 @@
                   active-class="active"
                 >
                   <a class="btn btn-icon btn-pills btn-outline-primary"
-                    ><i data-feather="arrow-right" class="fea icon-sm"></i
-                  ></a>
+                    ><img
+                      src="img/icons/chevron-right.svg"
+                  /></a>
                 </router-link>
               </div>
             </div>

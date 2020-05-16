@@ -76,11 +76,13 @@
                   </select>
                 </div>
               </div>
-
-              <div class="col-12 mb-0">
+              <div v-if="form.title != '' && form.description != '' && form.category != ''" class="col-12 mb-0">
                 <v-button class="btn btn-primary w-100" :loading="form.busy">
                   {{ $t("upload") }}
                 </v-button>
+              </div>
+              <div v-else class="col-12 mb-0">
+                <p>{{ $t('form_rule') }}</p>
               </div>
             </div>
           </form>

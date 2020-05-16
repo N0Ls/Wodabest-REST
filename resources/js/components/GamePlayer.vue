@@ -27,39 +27,12 @@
             <h5 class="mb-0 text-dark title">
               {{ projectTitle }}
             </h5>
-            <h6 class="text-muted tag mb-0">{{ categoryName }}</h6>
+            <h6 class="text-muted tag mb-0">{{ $t(categorySlug) }}</h6>
           </div>
         </div>
       </div>
     </form>
   </div>
-  <!--<div class="col-md-4">
-    <form @submit.prevent="update" @keydown="form.onKeydown($event)">
-      <div class="form-group">
-        <input
-          v-model="form.winner"
-          type="hidden"
-          class="form-control"
-          name="winner"
-        />
-        <input
-          v-model="form.loser"
-          type="hidden"
-          class="form-control"
-          name="loser"
-        />
-      </div>
-
-      <div>
-        <button type="submit" class="portfolio-item text-center">
-          <img :src="'/img/upload/' + filename" />
-        </button>
-        <div class="portfolio-meta">
-          <h2>{{ projectTitle }}</h2>
-        </div>
-      </div>
-    </form>
-  </div>-->
 </template>
 
 <script>
@@ -88,10 +61,11 @@ export default {
   },
 
   computed: {
-    categoryName() {
-      const category = this.$store.getters["categories/allCategories"].find(category => category.id === this.idCategory);
-      if(category !== undefined)
-        return category.name;
+    categorySlug() {
+      const category = this.$store.getters["categories/allCategories"].find(
+        category => category.id === this.idCategory
+      );
+      if (category !== undefined) return category.slug;
     }
   },
 

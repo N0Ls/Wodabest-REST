@@ -12,9 +12,9 @@
       <div class="icons text-center">
         <a
           @click="goTodetail(id)"
-          class="cursor text-primary work-icon bg-white d-inline-block rounded-pill mfp-image"
-          ><i data-feather="camera" class="fea icon-sm"></i
-        ></a>
+          class="cursor text-primary work-icon d-inline-block rounded-pill mfp-image"
+          ><img src="img/icons/magnifying-glass.svg"
+            /></a>
       </div>
       <div class="content p-3">
         <div v-if="user.id == owner">
@@ -37,19 +37,17 @@
           />
         </div>
         <div v-else>
-          <h5 class="mb-0 text-white title">
+          <h5 class="mb-0 text-white">
             {{ title }}
           </h5>
         </div>
         <h6 class="text-light tag mb-0">
           {{ $t("create_by") + " " + author }}
         </h6>
-        <div
-          v-if="user.id == owner"
-          class="remove-item"
-          @click="removeProject(project.id)"
-        >
-          {{ $t("delete") }}
+        <div v-if="user.id == owner" @click="removeProject(project.id)" class="mt-3 text-left">
+            <a class="btn btn-icon btn-pills btn-outline-primary"
+              ><img src="img/icons/trash.svg"
+            /></a>
         </div>
       </div>
     </div>
@@ -139,7 +137,10 @@ export default {
       this.$router.push({ name: "details", params: { id: id } });
     },
     async getAuthorName(id) {
-      let response = await this.$store.dispatch("users/getAuthorName", id);
+      let response = await this.$store.dispatch(
+        "users/getAuthorName",
+        this.owner
+      );
       this.author = response;
     }
   }

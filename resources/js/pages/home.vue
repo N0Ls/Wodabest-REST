@@ -52,10 +52,7 @@
               <span class="font-weight-bold">{{ name }}</span> {{ $t("today") }}
             </h2>
             <p class="text-muted">
-              The most well-known dummy text is the 'Lorem Ipsum', which is said
-              to have originated in the 16th century. Lorem Ipsum is composed in
-              a pseudo-Latin language which more or less corresponds to 'proper'
-              Latin.
+              {{ $t('home_introduction') }}
             </p>
 
             <div class="row justify-content-center" id="counter">

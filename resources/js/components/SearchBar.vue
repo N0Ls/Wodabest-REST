@@ -4,7 +4,7 @@
       <div class="offset-md-3 col-12 col-md-6">
         <div class="form-group position-relative">
           <input
-            placeholder="Recherche par mots clés"
+            :placeholder="$t('search_by_keywords')"
             v-model="search"
             class="form-control"
             type="text"

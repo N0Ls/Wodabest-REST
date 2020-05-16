@@ -1,6 +1,9 @@
 <template>
   <div>
-    <page-title :title="$t('upload')"></page-title>
+    <page-title
+      :title="$t('upload')"
+      :text="$t('upload_introduction')"
+    ></page-title>
     <create-form :user="user"></create-form>
   </div>
 </template>

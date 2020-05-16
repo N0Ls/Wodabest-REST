@@ -15,6 +15,7 @@
                   <th scope="col">{{ $t('wins') }}</th>
                   <th scope="col">{{ $t('losses') }}</th>
                   <th scope="col">{{ $t('victory_ratio') }}</th>
+                  <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>

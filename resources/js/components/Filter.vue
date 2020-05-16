@@ -63,30 +63,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.section {
-  padding: 100px 0;
-  position: relative;
-}
-
-.container-filter li a {
-  font-size: 14px;
-  padding: 0px 5px;
-  margin: 0 5px;
-  font-weight: 600;
-  letter-spacing: 0.8px;
-  cursor: pointer;
-  line-height: 34px;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
-
-.container-filter li a:hover {
-  color: #3c4858 !important;
-}
-
-.container-filter li a.active {
-  color: #00c9a7 !important;
-}
-</style>

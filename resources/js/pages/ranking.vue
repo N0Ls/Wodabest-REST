@@ -2,7 +2,7 @@
   <div>
     <page-title
       :title="$t('ranking')"
-      :text="$t('Texte d\'introduction de la page')"
+      :text="$t('ranking_introduction')"
     ></page-title>
     <ranked-projects-list></ranked-projects-list>
   </div>

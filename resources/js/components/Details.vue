@@ -1,60 +1,82 @@
 <template>
-  <div class="todo-item">
-
-    <img :src="'/img/upload/' + project.filename" />
-
-    <div class="todo-item-left">
-      <div v-if="user.id == owner">
-        <div
-          v-if="!editingTitle"
-          @dblclick="editProjectTitle"
-          class="todo-item-label"
-        >
-          {{ title }}
+  <div class="col-lg-6 col-md-6 col-12 order-md-2 order-1">
+    <div class="work-details rounded shadow-large p-4">
+      <h5 class="title border-bottom pb-3 mb-3">Project details :</h5>
+      <dl class="row mb-0">
+        <dt class="col-md-4 col-5">
+          {{ $t('title') }} :
+        </dt>
+        <div v-if="user.id == owner" class="col-md-8 col-7">
+          <dd
+            v-if="!editingTitle"
+            @dblclick="editProjectTitle"
+            class="text-muted"
+          >
+            {{ title }}
+          </dd>
+          <input
+            v-else
+            class="form-control"
+            type="text"
+            v-model="title"
+            @blur="doneEditTitle"
+            @keyup.enter="doneEditTitle"
+            @keyup.esc="cancelEditTitle"
+            v-focus
+          />
         </div>
-        <input
-          v-else
-          class="todo-item-edit"
-          type="text"
-          v-model="title"
-          @blur="doneEditTitle"
-          @keyup.enter="doneEditTitle"
-          @keyup.esc="cancelEditTitle"
-          v-focus
-        />
-      </div>
-      <div v-else>
-        {{ title }}
-      </div>
+
+        <dt class="col-md-4 col-5">{{ $t('author') }} :</dt>
+        <dd class="col-md-8 col-7 text-muted">{{ author }}</dd>
+
+        <dt class="col-md-4 col-5">{{ $t('category') }} :</dt>
+        <dd class="col-md-8 col-7 text-muted">{{ categoryName }}</dd>
+
+        <dt class="col-md-4 col-5">{{ $t('updated_on') }} :</dt>
+        <dd class="col-md-8 col-7 text-muted">{{ formatDate }}</dd>
+
+        <dt class="col-md-4 col-5">{{ $t('score') }} :</dt>
+        <dd class="col-md-8 col-7 mb-0 text-muted">
+          {{ score }}
+        </dd>
+
+        <dt class="col-md-4 col-5">{{ $t('project_games_played') }} :</dt>
+        <dd class="col-md-8 col-7 text-muted">{{ losses + wins }}</dd>
+
+        <dt class="col-md-4 col-5">{{ $t('wins') }} :</dt>
+        <dd class="col-md-8 col-7 mb-0 text-muted">
+          {{ wins }}
+        </dd>
+
+        <dt class="col-md-4 col-5">{{ $t('losses') }} :</dt>
+        <dd class="col-md-8 col-7 mb-0 text-muted">
+          {{ losses }}
+        </dd>
+      </dl>
     </div>
-
-    <div class="todo-item-left">
-      <div v-if="user.id == owner">
-        <div
-          v-if="!editingDescription"
-          @dblclick="editProjectDescription"
-          class="todo-item-label"
-        >
-          {{ description }}
-        </div>
-        <input
-          v-else
-          class="todo-item-edit"
-          type="text"
-          v-model="description"
-          @blur="doneEditDescription"
-          @keyup.enter="doneEditDescription"
-          @keyup.esc="cancelEditDescription"
-          v-focus
-        />
-      </div>
-      <div v-else>
+    <div v-if="user.id == owner" class="mt-4 pt-2">
+      <p
+        v-if="!editingDescription"
+        @dblclick="editProjectDescription"
+        class="text-muted mb-0"
+      >
         {{ description }}
-      </div>
+      </p>
+      <textarea
+        v-else
+        class="form-control"
+        rows="5"
+        type="text"
+        v-model="description"
+        @blur="doneEditDescription"
+        @keyup.enter="doneEditDescription"
+        @keyup.esc="cancelEditDescription"
+        v-focus
+      />
     </div>
-
-    <a @click="$router.go(-1)">back</a>
-
+    <div v-else class="mt-4 pt-2">
+      <p class="text-muted mb-0">" {{ description }} "</p>
+    </div>
   </div>
 </template>
 
@@ -69,11 +91,13 @@ export default {
   data() {
     return {
       id: this.project.id,
+      author: "",
       owner: this.project.user_id,
       title: this.project.title,
       description: this.project.description,
       filename: this.project.filename,
       category: this.project.category_id,
+      date: this.project.updated_at,
       editingTitle: false,
       editingDescription: false,
       score: this.project.score,
@@ -84,9 +108,36 @@ export default {
     };
   },
 
+  created() {
+    this.$store.dispatch("categories/retrieveCategories");
+  },
+
+  computed: {
+    ...mapGetters({ user: "auth/user" }),
+    categoryName() {
+      const category = this.$store.getters["categories/allCategories"].find(
+        category => category.id === this.category
+      );
+      if (category !== undefined) return category.name;
+    },
+    formatDate() {
+      if (this.date != null) {
+        const date = new Date(this.date);
+        return (
+          date.getFullYear() +
+          "-" +
+          (date.getMonth() + 1) +
+          "-" +
+          date.getDate()
+        );
+      } else return "Not defined";
+    }
+  },
+
   watch: {
     project: function() {
       this.updateData();
+      this.getAuthorName(this.owner);
     }
   },
 
@@ -98,10 +149,6 @@ export default {
     }
   },
 
-  computed: mapGetters({
-    user: "auth/user"
-  }),
-  
   methods: {
     editProjectTitle() {
       this.beforeEditCache = this.title;
@@ -142,6 +189,7 @@ export default {
         (this.description = this.project.description),
         (this.filename = this.project.filename),
         (this.category = this.project.category_id),
+        (this.date = this.project.updated_at),
         (this.editingTitle = false),
         (this.editingDescription = false),
         (this.score = this.project.score),
@@ -163,6 +211,13 @@ export default {
         losses: this.losses,
         rank: this.rank
       });
+    },
+    async getAuthorName(id) {
+      let response = await this.$store.dispatch(
+        "users/getAuthorName",
+        this.owner
+      );
+      this.author = response;
     }
   }
 };

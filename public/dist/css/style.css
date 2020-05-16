@@ -862,7 +862,7 @@ small {
 }
 
 .btn.btn-sm {
-  padding: 7px 16px;
+  padding: 2px 2px;
   font-size: 10px;
 }
 
@@ -916,6 +916,10 @@ small {
   width: 35px;
   line-height: 32px;
   padding: 0;
+}
+
+.btn img {
+  height: 15px;
 }
 
 .game-button {
@@ -1711,6 +1715,10 @@ button:not(:disabled) {
 
 .nav-item {
   background-color: #f7f7ff;
+}
+
+.navbar-light .navbar-nav .nav-link.active {
+color: #00c9a7;
 }
 
 .nav-pills {
@@ -3231,6 +3239,10 @@ p {
   line-height: 62px;
 }
 
+.feature .icon img {
+  height: 30px;
+}
+
 .feature .icon .feature-icon {
   stroke-width: 1.5;
 }
@@ -3600,6 +3612,10 @@ p {
 .work-container.work-modern .icons .work-icon:hover {
   background: #00c9a7 !important;
   color: #ffffff !important;
+}
+
+.work-container.work-modern .icons .work-icon img {
+  height: 25px;
 }
 
 .work-container.work-modern:hover .overlay-work {
@@ -4916,7 +4932,7 @@ a.text-light:focus {
   height: 48px;
   color: #fff;
   border-radius: 50%;
-  background-color: #adb5bd;
+  background-color: #ffffff;
   align-items: center;
   justify-content: center;
 }
