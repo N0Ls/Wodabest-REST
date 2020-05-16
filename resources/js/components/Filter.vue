@@ -50,6 +50,7 @@ export default {
   methods: {
     changeFilter(filter) {
       this.$store.dispatch(this.type + "/updateFilter", filter);
+      this.$store.dispatch("projects/defaultShow");
     },
     switchFilterFromType(type) {
       const Types = {
@@ -57,7 +58,6 @@ export default {
         games: this.$store.state.games.filter,
         ranking: this.$store.state.ranking.filter
       };
-
       return Types[type];
     }
   }

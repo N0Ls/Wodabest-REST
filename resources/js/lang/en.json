@@ -1,4 +1,5 @@
 {
+  "load_more": "Load more",
   "upload_introduction": "Wind Wodabest into frenzy.",
   "gallery_introduction": "Watch and be amazed.",
   "ranking_introduction": "The crème of the crème.",
@@ -19,7 +20,6 @@
   "your_email": "Your email:",
   "account": "Already have an account?",
   "not_account": "Don't have an account?",
-  "search_by_keywords": "Search by keywords",
   "result": "Search result: ",
   "project_details": "Project details",
   "peinture": "Painting",
@@ -27,6 +27,7 @@
   "illustration": "Drawing",
   "design": "Design",
   "all": "All",
+  "yours": "Yours",
   "assign_category": "Assign a category",
   "project_games_played": "Games played",
   "category": "Category",

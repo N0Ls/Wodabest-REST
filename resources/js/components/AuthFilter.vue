@@ -9,7 +9,7 @@
             :class="{ active: filter == false }"
             @click="changeUserFilter(false)"
             class="categories d-block text-muted rounded"
-            >All</a
+            >{{ $t('all') }}</a
           >
         </li>
         <li class="list-inline-item">
@@ -17,7 +17,7 @@
             :class="{ active: filter == true }"
             @click="changeUserFilter(true)"
             class="categories d-block text-muted rounded"
-            >Yours</a
+            >{{ $t('yours') }}</a
           >
         </li>
       </ul>
@@ -38,6 +38,7 @@ export default {
   methods: {
     changeUserFilter(filter) {
       this.$store.dispatch("projects/updateUserFilter", filter);
+      this.$store.dispatch("projects/defaultShow");
     }
   }
 };

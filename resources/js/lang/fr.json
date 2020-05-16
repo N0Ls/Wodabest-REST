@@ -1,4 +1,5 @@
 {
+  "load_more": "Charger plus",
   "upload_introduction": "Déchaînez Wodabest.",
   "gallery_introduction": "Prenez en plein la vue.",
   "ranking_introduction": "La crème de la crème.",
@@ -19,7 +20,6 @@
   "your_email": "Votre e-mail :",
   "account": "Vous avez déjà un compte ?",
   "not_account": "Vous n'avez pas de compte ?",
-  "search_by_keywords": "Recherche par mots clés",
   "result": "Résultat de la recherche : ",
   "project_details": "Détails du projet",
   "peinture": "Peinture",
@@ -27,6 +27,7 @@
   "illustration": "Illustration",
   "design": "Design",
   "all": "Tout",
+  "yours": "Les vôtres",
   "assign_category": "Attribuez une catégorie",
   "project_games_played": "Matchs joués",
   "category": "Catégorie",
@@ -94,3 +95,4 @@
   "failed_to_verify_email": "Impossible de vérifier l'e-mail.",
   "verify_email_address": "Nous vous avons envoyé un e-mail avec le lien de vérification."
 }
+  

@@ -1,30 +1,43 @@
 <template>
   <div>
-
     <search-bar />
 
     <auth-filter />
 
     <v-filter type="projects" />
 
-    <div v-if="projectsFiltered.length == 0" class="mt-4">
+    <div v-if="countFilteredProjects == 0" class="mt-4">
       <p>{{ $t("no_projects") }}</p>
     </div>
 
     <div v-else class="text-center mt-4">
       <p class="small text-muted para-desc mx-auto mb-0">
-        {{ $t("result") + projectsFiltered.length + " " + (projectsFiltered.length > 1 ? $t("projects") : $t("project")) }}
+        {{
+          $t("result") +
+            countFilteredProjects +
+            " " +
+            (countFilteredProjects > 1 ? $t("projects") : $t("project"))
+        }}
       </p>
     </div>
 
     <div class="container">
       <div class="row projects-wrapper">
         <project-item
-          v-for="project in projectsFiltered"
+          v-for="project in projectsFilteredToShow"
           :key="project.id"
           :project="project"
         />
       </div>
+    </div>
+    <div
+      v-show="countFilteredProjects > countprojectsFilteredToShow"
+      class="col-12 mb-0 text-center mt-5"
+      @click="loadMore"
+    >
+      <v-button class="btn btn-primary">
+        {{ $t("load_more") }}
+      </v-button>
     </div>
   </div>
 </template>
@@ -37,12 +50,34 @@ export default {
     this.$store.dispatch("projects/retrieveProjects");
   },
 
+  /*watch: {
+    $route(to, from) {
+      console.log("route changed");
+      this.$store.dispatch("projects/defaultShow");
+    }
+  },*/
+
   computed: {
     count() {
       return this.$store.getters["projects/count"];
     },
+    countFilteredProjects() {
+      return this.$store.getters["projects/countFilteredProjects"];
+    },
+    countprojectsFilteredToShow() {
+      return this.$store.getters["projects/countFilteredProjectsToShow"];
+    },
     projectsFiltered() {
       return this.$store.getters["projects/projectsFiltered"];
+    },
+    projectsFilteredToShow() {
+      return this.$store.getters["projects/projectsFilteredToShow"];
+    }
+  },
+
+  methods: {
+    loadMore() {
+      this.$store.dispatch("projects/updateShow");
     }
   }
 };
