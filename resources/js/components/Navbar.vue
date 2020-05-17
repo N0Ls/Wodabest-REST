@@ -49,7 +49,7 @@
             </li>
             <li v-if="user" class="nav-item">
               <router-link
-                :to="{ name: 'images' }"
+                :to="{ name: 'gallery' }"
                 class="nav-link"
                 active-class="active"
               >

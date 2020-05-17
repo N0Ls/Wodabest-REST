@@ -14,11 +14,11 @@ export default [
 
   { path: '/home', name: 'home', component: page('home.vue') },
   { path: '/game', name: 'game', component: page('game.vue') },
-  { path: '/images', name: 'images', component: page('images.vue') },
+  { path: '/gallery', name: 'gallery', component: page('gallery.vue') },
   { path: '/ranking', name: 'ranking', component: page('ranking.vue') },
   { path: '/upload', name: 'upload', component: page('upload.vue') },
 
-  { path: '/images/details/:id', name: 'details', component: page('details.vue') },
+  { path: '/gallery/details/:id', name: 'details', component: page('details.vue') },
 
   { path: '/settings',
     component: page('settings/index.vue'),
