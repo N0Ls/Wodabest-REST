@@ -13,6 +13,7 @@ import Filter from "./Filter";
 import Footer from "./Footer";
 import GamePlayer from "./GamePlayer";
 import GameView from "./GameView";
+import Insert from "./Insert";
 import Project from "./Project";
 import ProjectsList from "./ProjectsList";
 import RankedProject from "./RankedProject";
@@ -36,6 +37,7 @@ import { HasError, AlertError, AlertSuccess } from "vform";
   Footer,
   GamePlayer,
   GameView,
+  Insert,
   Project,
   ProjectsList,
   RankedProject,

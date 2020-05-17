@@ -2,7 +2,7 @@
   <div>
     <page-title
       :title="$t('game')"
-      :text="$t('game_intro')"
+      :text="$t('game_introduction')"
     ></page-title>
     <game-view></game-view>
   </div>

@@ -138,10 +138,6 @@ export default {
     LocaleDropdown
   },
 
-  data: () => ({
-    appName: window.config.appName
-  }),
-
   computed: mapGetters({
     user: "auth/user"
   }),
