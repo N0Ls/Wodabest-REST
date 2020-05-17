@@ -1,7 +1,6 @@
 import Vue from "vue";
 
 // Custom components
-import About from "./About";
 import AuthFilter from "./AuthFilter";
 import Card from "./Card";
 import Child from "./Child";
@@ -26,7 +25,6 @@ import { HasError, AlertError, AlertSuccess } from "vform";
 
 // Components registered globaly
 [
-  About,
   AuthFilter,
   Card,
   Child,

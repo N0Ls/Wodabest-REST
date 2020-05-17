@@ -88,7 +88,7 @@ export default {
 
   props: ["project"],
 
-  data() {
+    data: function() {
     return {
       id: this.project.id,
       author: "",

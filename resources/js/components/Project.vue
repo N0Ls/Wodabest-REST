@@ -10,9 +10,7 @@
             />
             <div class="overlay-work bg-dark"></div>
             <div class="icons text-center">
-                <a
-                    @click="goTodetail(id)"
-                    class="cursor text-primary work-icon d-inline-block rounded-pill mfp-image"
+                <a @click="goTodetail(id)" class="btn btn-icon"
                     ><img src="img/icons/magnifying-glass.svg"
                 /></a>
             </div>
@@ -83,7 +81,7 @@ export default {
         }
     },
 
-    data() {
+    data: function() {
         return {
             id: this.project.id,
             author: "",
