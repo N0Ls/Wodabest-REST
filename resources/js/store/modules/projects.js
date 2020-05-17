@@ -54,9 +54,7 @@ export const mutations = {
     state.projects = projects;
   },
   [types.RETRIEVE_PROJECT](state, project) {
-    console.log(state.project);
     state.project = project;
-    console.log(state.project);
   },
   [types.ADD_PROJECT](state, project) {
     state.projects.push({
