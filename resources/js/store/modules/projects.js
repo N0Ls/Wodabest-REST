@@ -140,7 +140,7 @@ export const actions = {
       .then(response => {
         context.commit(types.ADD_PROJECT, response.data);
         context.dispatch("updateFilter", "all");
-        context.dispatch("retrieveProjects");
+        //context.dispatch("retrieveProjects");
       })
       .catch(error => {
         console.log(error);
@@ -181,12 +181,11 @@ export const actions = {
       });
   },
   deleteProject(context, id) {
-    console.log(id);
     axios
       .delete("/api/projects/" + id)
       .then(response => {
         context.commit(types.DELETE_PROJECT, id);
-        // Update top projects state :
+        // Update top projects state on delete :
         context.dispatch("ranking/retrieveTopProjects", null, { root: true });
       })
       .catch(error => {

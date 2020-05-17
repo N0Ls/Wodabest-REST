@@ -140,7 +140,7 @@ export default {
 
       this.form.reset();
 
-      this.$router.push("/images");
+      this.$router.push("/gallery");
     }
   }
 };
