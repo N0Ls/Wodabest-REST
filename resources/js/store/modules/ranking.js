@@ -25,6 +25,12 @@ export const mutations = {
   [types.UPDATE_RANKING_FILTER](state, filter) {
     state.filter = filter;
     this.dispatch("ranking/retrieveTopProjects");
+  },
+  [types.UPDATE_TOP_PROJECT](state, project) {
+    if(state.topProjects) {
+      const index = state.topProjects.findIndex(item => item.id == project.id);
+      state.topProjects.splice(index, 1, project);
+    }
   }
 };
 

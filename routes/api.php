@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
 */
 
 Route::group(['middleware' => 'auth:api'], function () {
@@ -30,6 +25,10 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('/projects/ranking/{category}', 'ImageController@getRankedProjects');
 
     Route::get('/categories', 'CategoryController@index');
+
+    Route::get('/likes', 'LikeController@index');
+    Route::post('/likes', 'LikeController@store');
+    Route::delete('/likes/{like}', 'LikeController@destroy');
 
     Route::get('/games', 'GameController@index');
     Route::post('/games/init/{category}', 'GameController@init');

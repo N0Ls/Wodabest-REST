@@ -93,19 +93,7 @@ export const mutations = {
   },
   [types.UPDATE_PROJECT](state, project) {
     const index = state.projects.findIndex(item => item.id == project.id);
-    state.projects.splice(index, 1, {
-      id: project.id,
-      owner: project.owner,
-      title: project.title,
-      description: project.description,
-      filename: project.filename,
-      category: project.category,
-      editing: project.editing,
-      score: project.score,
-      wins: project.wins,
-      losses: project.losses,
-      rank: project.rank
-    });
+    state.projects.splice(index, 1, project);
     if (state.project.id == project.id) {
       state.project = project;
     }
@@ -184,18 +172,21 @@ export const actions = {
       })
       .then(response => {
         context.commit(types.UPDATE_PROJECT, response.data);
-        // Actions below to fix
-        context.dispatch("retrieveProjects");
+        context.commit("ranking/" + types.UPDATE_TOP_PROJECT, project, {
+          root: true
+        });
       })
       .catch(error => {
         console.log(error);
       });
   },
   deleteProject(context, id) {
+    console.log(id);
     axios
       .delete("/api/projects/" + id)
       .then(response => {
         context.commit(types.DELETE_PROJECT, id);
+        // Update top projects state :
         context.dispatch("ranking/retrieveTopProjects", null, { root: true });
       })
       .catch(error => {

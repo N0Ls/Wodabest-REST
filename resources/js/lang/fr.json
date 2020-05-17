@@ -27,6 +27,7 @@
   "your_email": "Votre e-mail :",
   "account": "Vous avez déjà un compte ?",
   "not_account": "Vous n'avez pas de compte ?",
+  "search_by_keywords": "Recherche par mots clés",
   "result": "Résultat de la recherche : ",
   "project_details": "Détails du projet",
   "peinture": "Peinture",
@@ -104,4 +105,3 @@
   "failed_to_verify_email": "Impossible de vérifier l'e-mail.",
   "verify_email_address": "Nous vous avons envoyé un e-mail avec le lien de vérification."
 }
-  

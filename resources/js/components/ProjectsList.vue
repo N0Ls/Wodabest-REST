@@ -48,6 +48,7 @@ export default {
 
   created() {
     this.$store.dispatch("projects/retrieveProjects");
+    this.$store.dispatch("likes/retrieveLikes");
   },
 
   /*watch: {

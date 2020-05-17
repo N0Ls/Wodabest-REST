@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Image as Image;
 use App\Category as Category;
+use App\Like as Like;
 use Illuminate\Http\Request;
 
 class ImageController extends Controller

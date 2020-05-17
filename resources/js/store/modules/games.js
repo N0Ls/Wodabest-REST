@@ -1,5 +1,5 @@
-import axios from "axios"
-import * as types from '../mutation-types'
+import axios from "axios";
+import * as types from "../mutation-types";
 
 // state
 export const state = {
@@ -20,13 +20,13 @@ export const getters = {
 
 // mutations
 export const mutations = {
-  [types.RETRIEVE_GAMES] (state, games) {
+  [types.RETRIEVE_GAMES](state, games) {
     state.games = games;
   },
-  [types.RETRIEVE_PLAYERS] (state, players) {
+  [types.RETRIEVE_PLAYERS](state, players) {
     state.activePlayers = players;
   },
-  [types.UPDATE_GAMES_FILTER] (state, filter) {
+  [types.UPDATE_GAMES_FILTER](state, filter) {
     state.filter = filter;
     this.dispatch("games/retrievePlayers");
   }
@@ -61,6 +61,14 @@ export const actions = {
         loser: game.loser
       })
       .then(response => {
+        response.data.forEach(project => {
+          context.commit("projects/" + types.UPDATE_PROJECT, project, {
+            root: true
+          });
+          context.commit("ranking/" + types.UPDATE_TOP_PROJECT, project, {
+            root: true
+          });
+        });
         context.dispatch("retrievePlayers");
       })
       .catch(error => {

@@ -25,6 +25,11 @@ export const DELETE_PROJECT = 'DELETE_PROJECT'
 // categories.js
 export const RETRIEVE_CATEGORIES = 'RETRIEVE_CATEGORIES'
 
+// likes.js
+export const RETRIEVE_LIKES = 'RETRIEVE_LIKES'
+export const CREATE_LIKE = 'CREATE_LIKE'
+export const DELETE_LIKE = 'DELETE_LIKE'
+
 // users.js
 export const RETRIEVE_USERS = 'RETRIEVE_USERS'
 
@@ -36,3 +41,4 @@ export const UPDATE_GAMES_FILTER = 'UPDATE_GAMES_FILTER'
 // ranking.js
 export const RETRIEVE_TOP_PROJECTS = 'RETRIEVE_TOP_PROJECTS'
 export const UPDATE_RANKING_FILTER = 'UPDATE_RANKING_FILTER'
+export const UPDATE_TOP_PROJECT = 'UPDATE_TOP_PROJECT'

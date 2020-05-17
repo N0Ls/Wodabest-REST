@@ -107,21 +107,8 @@ class GameController extends Controller
             'loser' => $request->loser
         ]);
 
-        /*$limit = 2;
+        $players = [$winner, $loser];
 
-        if($request->category != null)
-        {
-            $images = Image::where('category_id', Category::where('slug', $request->category)->value('id'))
-                ->orderBy(DB::raw('RAND()'))
-                ->take($limit)
-                ->get();
-        }
-        else
-        {
-            $images = Image::orderby(DB::raw('RAND()'))->take($limit)->get();
-        }
-
-        return response()->json(['images' => $images]);*/
-        return response()->json('Game created.', 201);
+        return response()->json($players, 201);
     }
 }

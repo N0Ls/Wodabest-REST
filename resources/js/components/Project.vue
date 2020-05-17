@@ -14,7 +14,7 @@
           @click="goTodetail(id)"
           class="cursor text-primary work-icon d-inline-block rounded-pill mfp-image"
           ><img src="img/icons/magnifying-glass.svg"
-            /></a>
+        /></a>
       </div>
       <div class="content p-3">
         <div v-if="user.id == owner">
@@ -44,10 +44,29 @@
         <h6 class="text-light tag mb-0">
           {{ $t("create_by") + " " + author }}
         </h6>
-        <div v-if="user.id == owner" @click="removeProject(project.id)" class="mt-3 text-left">
-            <a class="btn btn-icon btn-pills btn-outline-primary"
-              ><img src="img/icons/trash.svg"
-            /></a>
+        <div
+          v-if="user.id == owner"
+          @click="removeProject(project.id)"
+          class="d-inline-flex mt-3 text-left"
+        >
+          <a class="btn btn-icon btn-pills btn-outline-primary"
+            ><img src="img/icons/trash.svg"
+          /></a>
+        </div>
+        <div class="d-inline-flex mt-3 text-left align-items-center">
+          <a
+            v-if="isLiked"
+            @click="unlikeProject"
+            class="btn btn-icon btn-pills btn-outline-primary"
+            ><img src="img/icons/thumb-up-full.svg"
+          /></a>
+          <a
+            v-else
+            @click="likeProject"
+            class="btn btn-icon btn-pills btn-outline-primary"
+            ><img src="img/icons/thumb-up.svg"
+          /></a>
+          <p>{{ countProjectLikes }}</p>
         </div>
       </div>
     </div>
@@ -97,11 +116,39 @@ export default {
     this.getAuthorName(this.owner);
   },
 
-  computed: mapGetters({
-    user: "auth/user"
-  }),
+  computed: {
+    ...mapGetters({ user: "auth/user" }),
+    getAuthUserLikes() {
+      return this.$store.getters["likes/getAuthUserLikes"];
+    },
+    isLiked() {
+      if (
+        this.getAuthUserLikes.filter(
+          authLike => authLike.project_id == this.project.id
+        ).length == 1
+      )
+        return true;
+      else return false;
+    },
+    countProjectLikes() {
+      const likes = this.$store.getters["likes/allLikes"];
+      return likes.filter(like => like.project_id == this.project.id).length;
+    }
+  },
 
   methods: {
+    likeProject() {
+      this.$store.dispatch("likes/like", {
+        project: this.id,
+        user: this.user.id
+      });
+    },
+    unlikeProject() {
+      this.$store.dispatch("likes/unlike", {
+        project: this.id,
+        user: this.user.id
+      });
+    },
     removeProject(id) {
       this.$store.dispatch("projects/deleteProject", id);
     },
