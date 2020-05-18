@@ -72,43 +72,50 @@ class GameController extends Controller
      */
     public function update(Request $request)
     {
-        $winner = Image::where('id', '=', $request->winner)->first();
-        $loser = Image::where('id', '=', $request->loser)->first();
-        //$category = $request->category;
+        try
+        {
+            $winner = Image::where('id', '=', $request->winner)->first();
+            $loser = Image::where('id', '=', $request->loser)->first();
+            //$category = $request->category;
 
-        $wins = $winner->wins + 1;
+            $wins = $winner->wins + 1;
 
-        $winner_expected_score = Game::expected($loser->score, $winner->score);
-        $winner_new_score = Game::win($winner->score, $winner_expected_score);
+            $winner_expected_score = Game::expected($loser->score, $winner->score);
+            $winner_new_score = Game::win($winner->score, $winner_expected_score);
 
-        $winner_rank = Game::rank($winner_new_score, $wins, $winner->wins);
+            $winner_rank = Game::rank($winner_new_score, $wins, $winner->wins);
 
-        $winner->update([
-            'score' => $winner_new_score,
-            'wins' => $wins,
-            'rank' => $winner_rank,
-        ]);
+            $winner->update([
+                'score' => $winner_new_score,
+                'wins' => $wins,
+                'rank' => $winner_rank,
+            ]);
 
-        $losses = $loser->losses + 1;
+            $losses = $loser->losses + 1;
 
-        $loser_expected_score = Game::expected($winner->score, $loser->score);
-        $loser_new_score = Game::win($loser->score, $loser_expected_score);
+            $loser_expected_score = Game::expected($winner->score, $loser->score);
+            $loser_new_score = Game::win($loser->score, $loser_expected_score);
 
-        $loser_rank = Game::rank($loser_new_score, $losses, $loser->wins);
+            $loser_rank = Game::rank($loser_new_score, $losses, $loser->wins);
 
-        $loser->update([
-            'score' => $loser_new_score,
-            'losses' => $losses,
-            'rank' => $loser_rank,
-        ]);
+            $loser->update([
+                'score' => $loser_new_score,
+                'losses' => $losses,
+                'rank' => $loser_rank,
+            ]);
 
-        $game = Game::create([
-            'winner' => $request->winner,
-            'loser' => $request->loser
-        ]);
+            $game = Game::create([
+                'winner' => $request->winner,
+                'loser' => $request->loser
+            ]);
 
-        $players = [$winner, $loser];
+            $players = [$winner, $loser];
 
-        return response()->json($players, 201);
+            return response()->json($players, 201);
+        }
+        catch(\Exception $e)
+        {
+            echo $e->getMessage();
+        }
     }
 }
