@@ -1,5 +1,4 @@
 [![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
 [![MIT License][license-shield]][license-url]
 
 <br />
@@ -109,17 +108,13 @@ Nils LANDRODIE - Backend Developper - nilsland31@gmail.com
 
 Mattéo POPOFF - Backend Developper - pmatteo98@gmail.com
 
-Léa ROSTOKER - Webdesigner - lea.rostoker.12@gmail.com
-
 Cloé QUIRIN - Frontend Developer - cloequirin3@gmail.com
+
+Léa ROSTOKER - Webdesigner - lea.rostoker.12@gmail.com
 
 Vincent SCAVINNER - Frontend Developer - vscavinner@gmail.com
 
-Project Link: [https://github.com/N0Ls/Wodabest-REST](https://github.com/N0Ls/Wodabest-REST)
-
 [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=flat-square
 [contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=flat-square
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
 [license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
