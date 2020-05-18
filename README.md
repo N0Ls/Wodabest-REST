@@ -59,17 +59,26 @@ Wodabest is built on a set of high-performance technologies to provide you with 
 
 To setting up the project locally and get a local copy up and running, follow the following steps.
 
-1. Clone the repo
+1. Clone the repository
 ```sh
 git clone https://github.com/N0Ls/Wodabest-REST.git
 ```
-2. Create and edit `.env` to set your database connection details
-3. Create an empty folder 'upload' in public/img directory
-4. Install Laravel to process the required files in web browser
+2. Create a .env file to set your connection details
+```sh
+cp .env.example .env
+```
+3. Install Laravel to process the required files in web browser
 ```sh
 composer install
 ```
-5. Run `php artisan key:generate` and `php artisan jwt:secret`
+4. Generate Laravel application key
+```sh
+php artisan key:generate
+```
+5. Generate a JWT secret key (will be used to sign your tokens)
+```sh
+php artisan jwt:secret
+```
 6. Run migrations with seed option
 ```sh
 php artisan migrate --seed
