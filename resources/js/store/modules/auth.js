@@ -21,6 +21,10 @@ export const getters = {
 
 // mutations
 export const mutations = {
+    [types.DEFAULT_AUTH_STATE](state) {
+        Object.assign(state, getDefaultAuthState());
+    },
+
     [types.SAVE_TOKEN](state, { token, remember }) {
         state.token = token;
         Cookies.set("token", token, { expires: remember ? 365 : null });

@@ -24,6 +24,9 @@ export const getters = {
 
 // mutations
 export const mutations = {
+    [types.DEFAULT_GAMES_STATE](state) {
+        Object.assign(state, getDefaultGameState());
+    },
     [types.RETRIEVE_GAMES](state, games) {
         state.games = games;
     },

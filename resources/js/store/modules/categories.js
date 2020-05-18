@@ -22,6 +22,9 @@ export const getters = {
 
 // mutations
 export const mutations = {
+    [types.DEFAULT_CATEGORIES_STATE](state) {
+        Object.assign(state, getDefaultCategoriesState());
+    },
     [types.RETRIEVE_CATEGORIES](state, categories) {
         state.categories = categories;
     }

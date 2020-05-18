@@ -53,6 +53,9 @@ export const getters = {
 
 // mutations
 export const mutations = {
+  [types.DEFAULT_PROJECTS_STATE](state) {
+    Object.assign(state, getDefaultProjectsState());
+  },
   [types.RETRIEVE_PROJECTS](state, projects) {
     state.projects = projects;
   },
