@@ -1,37 +1,42 @@
-import axios from 'axios'
-import * as types from '../mutation-types'
+import axios from "axios";
+import * as types from "../mutation-types";
+
+const getDefaultCategoriesState = () => {
+    return {
+        categories: []
+    };
+};
 
 // state
-export const state = {
-  categories: []
-};
+export const state = getDefaultCategoriesState();
 
 // getters
 export const getters = {
-  count(state) {
-    return state.categories.length;
-  },
-  allCategories(state) {
-    return state.categories;
-  }
+    count(state) {
+        return state.categories.length;
+    },
+    allCategories(state) {
+        return state.categories;
+    }
 };
 
 // mutations
 export const mutations = {
-  [types.RETRIEVE_CATEGORIES] (state, categories) {
-    state.categories = categories; 
-  }
+    [types.RETRIEVE_CATEGORIES](state, categories) {
+        state.categories = categories;
+    }
 };
 
 // actions
 export const actions = {
-  retrieveCategories(context) {
-    axios.get('/api/categories')
-    .then(response => {
-        context.commit(types.RETRIEVE_CATEGORIES, response.data)
-    })
-    .catch(error => {
-      console.log(error)
-    })
-  }
+    retrieveCategories(context) {
+        axios
+            .get("/api/categories")
+            .then(response => {
+                context.commit(types.RETRIEVE_CATEGORIES, response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
 };

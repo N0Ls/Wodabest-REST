@@ -1,10 +1,14 @@
 import axios from "axios";
 import * as types from "../mutation-types";
 
-// state
-export const state = {
-  users: []
+const getDefaultUsersState = () => {
+  return {
+    users: []
+  };
 };
+
+// state
+export const state = getDefaultUsersState();
 
 // getters
 export const getters = {

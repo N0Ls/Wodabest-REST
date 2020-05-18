@@ -1,10 +1,14 @@
 import axios from "axios";
 import * as types from "../mutation-types";
 
-// state
-export const state = {
-  likes: []
+const getDefaultLikesState = () => {
+  return {
+    likes: []
+  };
 };
+
+// state
+export const state = getDefaultLikesState();
 
 // getters
 export const getters = {

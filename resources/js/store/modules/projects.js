@@ -1,16 +1,19 @@
 import axios from "axios";
 import * as types from "../mutation-types";
 
-// state
-export const state = {
-  filter: "all",
-  show: 8,
-  keywords: false,
-  userFilter: false,
-  dateFilter: false,
-  projects: [],
-  project: []
+const getDefaultProjectsState = () => {
+  return {
+    filter: "all",
+    show: 8,
+    keywords: false,
+    userFilter: false,
+    dateFilter: false,
+    projects: [],
+    project: []
+  };
 };
+
+export const state = getDefaultProjectsState();
 
 // getters
 export const getters = {
