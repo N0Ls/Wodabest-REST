@@ -22,6 +22,8 @@ const modules = requireContext.keys()
   modules
 })
 
-store.dispatch('users/retrieveUsers');
+if(store.getters["users/count"] != null) {
+  store.dispatch('users/retrieveUsers');
+}
 
 export default store
