@@ -13,6 +13,7 @@ import Footer from "./Footer";
 import GamePlayer from "./GamePlayer";
 import GameView from "./GameView";
 import Insert from "./Insert";
+import Introduction from './Introduction';
 import LinkCard from "./LinkCard";
 import Project from "./Project";
 import ProjectsList from "./ProjectsList";
@@ -37,6 +38,7 @@ import { HasError, AlertError, AlertSuccess } from "vform";
   GamePlayer,
   GameView,
   Insert,
+  Introduction,
   LinkCard,
   Project,
   ProjectsList,
