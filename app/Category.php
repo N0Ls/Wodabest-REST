@@ -10,7 +10,12 @@ class Category extends Model
 
     protected $table = 'categories';
 
-    public function image()
+    /**
+     * Get the projects.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function images()
     {
         return $this->hasMany(Image::class);
     }

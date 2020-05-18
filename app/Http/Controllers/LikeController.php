@@ -9,11 +9,11 @@ use Illuminate\Http\Request;
 class LikeController extends Controller
 {
     /**
-     * Display a listing of the resources.
+     * Retrive all likes from storage.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         try
         {
@@ -28,7 +28,7 @@ class LikeController extends Controller
     }
 
     /**
-     * Create the specified resource in storage.
+     * Create like item in storage.
      *
      * @param \Illuminate\Http\Request
      * @return \Illuminate\Http\Response
@@ -54,7 +54,7 @@ class LikeController extends Controller
 
 
     /**
-     * Delete the specified resource in storage.
+     * Delete like item in storage.
      *
      * @param App\Like $like
      * @return \Illuminate\Http\Response

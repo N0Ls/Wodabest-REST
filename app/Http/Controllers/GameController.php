@@ -16,7 +16,7 @@ class GameController extends Controller
     }
     
     /**
-     * Display a listing of the resource.
+     * Retrieve all games from storage.
      *
      * @return \Illuminate\Http\Response
      */
@@ -35,7 +35,7 @@ class GameController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Retrieve players for the next game.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -65,7 +65,7 @@ class GameController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified players in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response

@@ -111,8 +111,18 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function image()
+    public function images()
     {
         return $this->hasMany(Image::class);
+    }
+
+    /**
+     * Get the user likes.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
     }
 }

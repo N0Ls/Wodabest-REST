@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     /**
-     * Display a listing of the resources.
+     * Retrieve all categories from storage.
      *
      * @return \Illuminate\Http\Response
      */

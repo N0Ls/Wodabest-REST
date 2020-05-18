@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class ImageController extends Controller
 {
     /**
-     * Display a listing of the resources.
+     * Retrive all projects from storage.
      *
      * @return \Illuminate\Http\Response
      */
@@ -29,7 +29,7 @@ class ImageController extends Controller
     }
 
     /**
-     * Display a listing of the resources.
+     * Get the specified project from storage.
      *
      * @param \Illuminate\Http\Request
      * @return \Illuminate\Http\Response
@@ -49,7 +49,10 @@ class ImageController extends Controller
     }
 
     /**
+     * Retrieve the top projects from storage. 
      * 
+     * @param \Illuminate\Http\Request
+     * @return \Illuminate\Http\Response
      */
     public function getRankedProjects(Request $request)
     {
@@ -75,7 +78,7 @@ class ImageController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified project in storage.
      *
      * @param \Illuminate\Http\Request
      * @param App\Image $project
@@ -101,7 +104,7 @@ class ImageController extends Controller
     }
 
     /**
-     * Delete the specified resource from storage.
+     * Create the specified project in storage.
      *
      * @param \Illuminate\Http\Request
      * @return \Illuminate\Http\Response
@@ -164,7 +167,7 @@ class ImageController extends Controller
     }
 
     /**
-     * Delete the specified resource from storage.
+     * Delete the specified project from storage.
      *
      * @param App\Image $project
      * @return \Illuminate\Http\Response
