@@ -92,6 +92,8 @@ npm install
 
 ### Development
 
+
+Open a terminal and run the following command :
 ```bash
 # build and watch
 npm run watch
@@ -100,12 +102,10 @@ npm run watch
 npm run hot
 ```
 
-On another terminal, run the following command :
+On another terminal, run :
 ```bash
 php artisan serve
 ```
-
-An follow the url.
 
 ## License
 
