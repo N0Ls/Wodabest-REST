@@ -43,7 +43,7 @@ Have you just finished your last creation? Don't wait any longer and bring it in
 
 ### Built With
 
-Wodabest is built on a set of high-performance technologies to provide you with an optimal user experience.
+Wodabest is built on a set of trendy technologies to provide you with an optimal user experience.
 * [Bootstrap](https://getbootstrap.com)
 * [Laravel](https://laravel.com)
 * [Vue](https://vuejs.org/)
