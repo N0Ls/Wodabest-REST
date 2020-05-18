@@ -22,10 +22,10 @@ class CreateOauthProvidersTable extends Migration
             $table->string('refresh_token')->nullable();
             $table->timestamps();
 
-            /*$table->foreign('user_id')
+            $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
-                ->onDelete('cascade');*/
+                ->onDelete('cascade');
         });
     }
 

@@ -19,11 +19,14 @@ class CreateLikesTable extends Migration
             $table->bigInteger('project_id')->unsigned();
             $table->timestamps();
 
-             //$table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            /*$table->foreign('user_id')
+            $table->foreign('project_id')
+                ->references('id')
+                ->on('images')
+                ->onDelete('cascade');
+            $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
-                ->onDelete('cascade');*/
+                ->onDelete('cascade');
         });
     }
 

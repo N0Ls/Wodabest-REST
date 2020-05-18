@@ -37,7 +37,7 @@ class CreateImagesTable extends Migration
     public function up()
     {
         Schema::create('images', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('category_id')->unsigned();
             $table->string('title');
@@ -49,11 +49,14 @@ class CreateImagesTable extends Migration
             $table->bigInteger('rank')->unsigned()->default(0);
             $table->timestamps();
 
-            //$table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            /*$table->foreign('user_id')
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('categories')
+                ->onDelete('cascade');
+            $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
-                ->onDelete('cascade');*/
+                ->onDelete('cascade');
         });
     }
 
