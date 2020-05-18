@@ -96,11 +96,11 @@ On another terminal, run the following command :
 php artisan serve
 ```
 
-An follow the url
+An follow the url.
 
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License.
 
 ## Contributors
 
