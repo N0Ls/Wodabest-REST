@@ -108,46 +108,54 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        try
+        try 
         {
-            $exploded = explode(',', $request->image);
-
-            $decoded = base64_decode($exploded[1]);
-
-            if(str_contains($exploded[0], 'jpeg'))
-            {
-                $extension = 'jpg';
-            }
-            else
-            {
-                $extension = 'png';
-            }
-
-            $filename = str_random() . '.' .$extension;
-
-            $path = 'img/upload/' .$filename;
-
-            file_put_contents($path, $decoded);
-
             $data = $request->validate([
-                'user_id' => 'int',
-                'title' => 'string',
-                'description' => 'string'
+                'user_id' => 'required|int',
+                'title' => 'required|string',
+                'description' => 'required|string'
              ]);
 
-            $project = new Image;
+                $exploded = explode(',', $request->image);
 
-            $category_id =  Category::where('name', $request->category)->select('id')->first()['id'];
-
-            $project->user_id = $request->user_id;
-            $project->category_id = $category_id;
-            $project->title = $request->title;
-            $project->description = $request->description;
-            $project->filename = $filename;
-
-            $project->save();
-
-            return response()->json($project, 201);
+                $decoded = base64_decode($exploded[1]);
+    
+                if(str_contains($exploded[0], 'jpeg') || str_contains($exploded[0], 'jpg'))
+                {
+                    $extension = 'jpg';
+                }
+                else if(str_contains($exploded[0], 'png'))
+                {
+                    $extension = 'png';
+                }
+                else if(str_contains($exploded[0], 'gif'))
+                {
+                    $extension = 'gif';
+                }
+                else if(str_contains($exploded[0], 'svg'))
+                {
+                    $extension = 'svg';
+                }
+    
+                $filename = str_random() . '.' .$extension;
+    
+                $path = 'img/upload/' .$filename;
+    
+                file_put_contents($path, $decoded);
+    
+                $project = new Image;
+    
+                $category_id =  Category::where('name', $request->category)->select('id')->first()['id'];
+    
+                $project->user_id = $request->user_id;
+                $project->category_id = $category_id;
+                $project->title = $request->title;
+                $project->description = $request->description;
+                $project->filename = $filename;
+    
+                $project->save();
+    
+                return response()->json($project, 201);
         }
         catch(\Exception $e)
         {
@@ -165,7 +173,10 @@ class ImageController extends Controller
     {
         try 
         {
+            $file_path = public_path() . '/img/upload/' . $project->filename;
+            
             $project->delete();
+            unlink($file_path);
 
             return response()->json('Deleted project item.', 200);
         }

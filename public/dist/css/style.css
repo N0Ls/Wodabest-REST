@@ -2051,7 +2051,7 @@ p {
 }
 
 .bg-overlay {
-  background-color: rgba(60, 72, 88, 0.7);
+  background-color: rgba(55, 64, 77, 0.7);
   position: absolute;
   top: 0;
   right: 0;
@@ -3619,7 +3619,7 @@ p {
 }
 
 .work-container.work-modern:hover .overlay-work {
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 .work-container.work-modern:hover .content {

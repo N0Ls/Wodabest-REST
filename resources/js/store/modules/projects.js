@@ -142,6 +142,7 @@ export const actions = {
         category: project.category
       })
       .then(response => {
+        //console.log(response.data)
         context.commit(types.ADD_PROJECT, response.data);
         context.dispatch("updateFilter", "all");
         //context.dispatch("retrieveProjects");
