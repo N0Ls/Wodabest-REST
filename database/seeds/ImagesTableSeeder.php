@@ -39,7 +39,7 @@ class ImagesTableSeeder extends Seeder
                          copy($path . '/' . $filename, $dest . $filename);
 
                         DB::table('images')->insert([
-                            'user_id' => rand(1, 3),
+                            'user_id' => rand(1, 5),
                             'category_id' => rand(1, 4),
                             'title' => $title,
                             'filename' => $filename,
