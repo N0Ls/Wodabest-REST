@@ -5,7 +5,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/N0Ls/Wodabest-REST">
-    <img src="public/img/wodabest.png" alt="Logo" width="80">
+    <img src="public/img/logo/wodabest.png" alt="Logo" width="80">
   </a>
 
   <h3 align="center">Wodabest</h3>
@@ -65,16 +65,17 @@ To setting up the project locally and get a local copy up and running, follow th
 git clone https://github.com/N0Ls/Wodabest-REST.git
 ```
 2. Create and edit `.env` to set your database connection details
-3. Install Laravel to process the required files in web browser
+3. Create an empty folder 'upload' in public/img directory
+4. Install Laravel to process the required files in web browser
 ```sh
 composer install
 ```
-4. Run `php artisan key:generate` and `php artisan jwt:secret`
-5. Run migrations with seed option
+5. Run `php artisan key:generate` and `php artisan jwt:secret`
+6. Run migrations with seed option
 ```sh
 php artisan migrate --seed
 ```
-6. Install NPM packages
+7. Install NPM packages
 ```sh
 npm install
 ```
