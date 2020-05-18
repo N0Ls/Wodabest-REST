@@ -23,7 +23,7 @@ export const getters = {
 
 // mutations
 export const mutations = {
-  [types.DEFAULT_RANKING_STATE](state) {
+  [types.DEFAULT_TOP_PROJECTS_STATE](state) {
     Object.assign(state, getDefaultRankingState());
   },
     [types.RETRIEVE_TOP_PROJECTS](state, projects) {
