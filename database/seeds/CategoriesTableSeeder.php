@@ -12,7 +12,7 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $names = ['3D', 'Design', 'Illustration', 'Peinture'];
+        $names = ['3D', 'Design', 'Identité graphique', 'Illustration', 'Peinture', 'Photographie', 'Web Design'];
         DB::table('categories')->insert([
             [
                 'name' => $names[0],
@@ -29,6 +29,18 @@ class CategoriesTableSeeder extends Seeder
             [
                 'name' => $names[3],
                 'slug' => str_slug($names[3])
+            ],
+            [
+                'name' => $names[4],
+                'slug' => str_slug($names[4])
+            ],
+            [
+                'name' => $names[5],
+                'slug' => str_slug($names[5])
+            ],
+            [
+                'name' => $names[6],
+                'slug' => str_slug($names[6])
             ],
         ]);
     }
