@@ -17,11 +17,11 @@ class UsersTableSeeder extends Seeder
                 'email' => 'nilsland31@gmail.com',
                 'password' => Hash::make('password')
             ],
-            [
+            /*[
                 'name' => 'Mattéo Popoff',
                 'email' => 'pmatteo98@gmail.com',
                 'password' => Hash::make('password')
-            ],
+            ],*/
             [
                 'name' => 'Cloé Quirin',
                 'email' => 'cloequirin3@gmail.com',
@@ -32,11 +32,11 @@ class UsersTableSeeder extends Seeder
                 'email' => 'lea.rostoker.12@gmail.com',
                 'password' => Hash::make('password')
             ],
-            [
+            /*[
                 'name' => 'Vincent Scavinner',
                 'email' => 'vscavinner@gmail.com',
                 'password' => Hash::make('password')
-            ]
+            ]*/
         ]);
     }
 }

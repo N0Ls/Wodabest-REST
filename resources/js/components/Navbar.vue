@@ -83,6 +83,10 @@
                                 aria-haspopup="true"
                                 aria-expanded="false"
                             >
+                                <img
+                                    :src="user.photo_url"
+                                    class="rounded-circle profile-photo mr-1"
+                                />
                                 {{ user.name }}
                             </a>
                             <div class="dropdown-menu bg-light">

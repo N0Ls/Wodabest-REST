@@ -99,8 +99,9 @@
                                 >
                                     {{ $t("login") }}
                                 </v-button>
+                                <login-with-github />
                             </div>
-
+                            
                             <div class="col-12 text-center">
                                 <p class="mb-0 mt-3">
                                     <small class="text-dark mr-2">{{
@@ -126,9 +127,14 @@
 
 <script>
 import Form from "vform";
+import LoginWithGithub from '~/components/LoginWithGithub'
 
 export default {
     middleware: "guest",
+
+    components: {
+    LoginWithGithub
+  },
 
     metaInfo() {
         return { title: this.$t("login") };

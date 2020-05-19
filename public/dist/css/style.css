@@ -4448,6 +4448,11 @@ a.btn.disabled {
   position: relative;
 }
 
+.dropdown img {
+  width: 25px;
+  height: auto;
+}
+
 .dropdown-menu {
   font-size: 1rem;
   position: absolute;
