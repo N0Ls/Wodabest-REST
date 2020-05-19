@@ -24,6 +24,12 @@
                     />
                 </div>
 
+                <div v-else class="col-md-8 col-7">
+                    <dd class="text-muted">
+                        {{ title }}
+                    </dd>
+                </div>
+
                 <dt class="col-md-4 col-5">{{ $t("author") }} :</dt>
                 <dd class="col-md-8 col-7 text-muted">{{ author }}</dd>
 
