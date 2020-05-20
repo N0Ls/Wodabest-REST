@@ -2,11 +2,10 @@
     <div class="col-lg-6 col-md-12 order-2 order-lg-1 mt-5 mt-lg-0">
         <div class="section-title mr-lg-5">
             <h6 class="text-muted">
-                {{ $t("a_figure") }}
+                {{ $t("a_family") }}
             </h6>
             <h2 class="mb-4">
-                <span class="font-weight-bold">{{ countUsers }} </span
-                >{{ $t("users") }}
+                <span class="font-weight-bold">{{ appName }}</span>
             </h2>
             <p class="text-muted">
                 {{ $t("authentification_introduction_1") }}
@@ -20,7 +19,7 @@
             <p class="text-muted">
                 {{ $t("authentification_introduction_4") }}
             </p>
-            <h4 class="text-dark">{{ $t("join") }} Wodabest !</h4>
+            <h4 class="text-dark">{{ $t("join") }} !</h4>
         </div>
     </div>
 </template>
@@ -29,14 +28,8 @@
 export default {
     name: "introduction",
 
-    computed: {
-        countUsers() {
-            return this.$store.getters["users/count"];
-        }
-    },
-
-    created() {
-        this.$store.dispatch("users/retrieveUsers");
-    }
+    data: () => ({
+        appName: window.config.appName,
+    })
 };
 </script>

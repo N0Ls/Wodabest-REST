@@ -49,6 +49,7 @@ export default {
     name: "projects-list",
 
     created() {
+        this.$store.dispatch("users/retrieveUsers");
         this.$store.dispatch("projects/retrieveProjects");
         this.$store.dispatch("likes/retrieveLikes");
     },

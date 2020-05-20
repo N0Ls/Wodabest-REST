@@ -9,6 +9,17 @@
                     <div class="text-center">
                         <h5 class="mb-4 pb-2">{{ $t("login") }}</h5>
                     </div>
+
+                    <div class="col-12 mb-0 text-center">
+                        <login-with-google />
+                        <login-with-github />
+                    </div>
+
+                    <div class="col-12 text-center">
+                        <p class="mb-0 mt-3">
+                            <small class="text-dark">{{ $t("or") }}</small>
+                        </p>
+                    </div>
                     <form
                         @submit.prevent="login"
                         @keydown="form.onKeydown($event)"
@@ -99,9 +110,8 @@
                                 >
                                     {{ $t("login") }}
                                 </v-button>
-                                <login-with-github />
                             </div>
-                            
+
                             <div class="col-12 text-center">
                                 <p class="mb-0 mt-3">
                                     <small class="text-dark mr-2">{{
@@ -127,14 +137,16 @@
 
 <script>
 import Form from "vform";
-import LoginWithGithub from '~/components/LoginWithGithub'
+import LoginWithGithub from "~/components/LoginWithGithub";
+import LoginWithGoogle from "~/components/LoginWithGoogle";
 
 export default {
     middleware: "guest",
 
     components: {
-    LoginWithGithub
-  },
+        LoginWithGithub,
+        LoginWithGoogle
+    },
 
     metaInfo() {
         return { title: this.$t("login") };

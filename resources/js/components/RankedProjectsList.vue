@@ -41,6 +41,7 @@ export default {
     name: "ranked-projects-list",
 
     created() {
+        this.$store.dispatch("users/retrieveUsers");
         this.$store.dispatch("ranking/retrieveTopProjects");
     },
 

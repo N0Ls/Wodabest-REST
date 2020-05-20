@@ -22,6 +22,7 @@ class OAuthController extends Controller
     {
         config([
             'services.github.redirect' => route('oauth.callback', 'github'),
+            'services.google.redirect' => route('oauth.callback', 'google'),
         ]);
     }
 
