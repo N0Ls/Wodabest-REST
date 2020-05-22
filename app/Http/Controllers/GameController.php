@@ -47,13 +47,12 @@ class GameController extends Controller
             $limit = 2;
             if($request->category && $request->category !== "all")
             {
-                $category_id =  Category::where('name', $request->category)->select('id')->first()['id'];
-                $players = Image::where('category_id', $category_id)->orderby(DB::raw('RAND()'))->take($limit)->get();
-                return $players;
+                $category_id =  Category::where('slug', $request->category)->select('id')->first()['id'];
+                $players = Image::where('category_id', $category_id)->inRandomOrder()->take($limit)->get();
             }
             else
             {
-                $players = Image::orderby(DB::raw('RAND()'))->take($limit)->get();
+                $players = Image::inRandomOrder()->take($limit)->get();
             }
 
             return response()->json($players);
