@@ -83,8 +83,8 @@ export default {
 
   methods: {
     async update() {
-      await this.form.patch("/api/settings/password");
-
+      const data = await this.form.patch("/api/settings/password");
+      console.log(data);
       this.form.reset();
     }
   }

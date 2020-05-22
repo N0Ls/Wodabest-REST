@@ -154,7 +154,7 @@ export default {
             password: "",
             password_confirmation: ""
         }),
-        // We don't verify email
+        // We don't verify email for now
         mustVerifyEmail: false
     }),
 
@@ -181,7 +181,7 @@ export default {
                 const {
                     data: { token }
                 } = await this.form.post("/api/login");
-
+                
                 // Save the token.
                 this.$store.dispatch("auth/saveToken", { token });
 

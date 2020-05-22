@@ -6,7 +6,7 @@ import Card from "./Card";
 import Child from "./Child";
 import Button from "./Button";
 import Checkbox from "./Checkbox";
-import CreateForm from "./Createform";
+import CreateForm from "./CreateForm";
 import Details from "./Details";
 import Filter from "./Filter";
 import Footer from "./Footer";

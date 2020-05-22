@@ -138,11 +138,9 @@ export const actions = {
         title: project.title,
         description: project.description,
         category: project.category,
-        image: project.image,
-        category: project.category
+        image: project.image
       })
       .then(response => {
-        //console.log(response.data)
         context.commit(types.ADD_PROJECT, response.data);
         context.dispatch("updateFilter", "all");
         //context.dispatch("retrieveProjects");
@@ -176,6 +174,7 @@ export const actions = {
         description: project.description
       })
       .then(response => {
+        console.log(response)
         context.commit(types.UPDATE_PROJECT, response.data);
         context.commit("ranking/" + types.UPDATE_TOP_PROJECT, project, {
           root: true
@@ -189,6 +188,7 @@ export const actions = {
     axios
       .delete("/api/projects/" + id)
       .then(response => {
+        console.log(response)
         context.commit(types.DELETE_PROJECT, id);
         // Update top projects state on delete :
         context.dispatch("ranking/retrieveTopProjects", null, { root: true });
