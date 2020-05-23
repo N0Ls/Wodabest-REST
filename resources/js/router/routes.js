@@ -15,7 +15,7 @@ export default [
   { path: '/home', name: 'home', component: page('home.vue') },
   { path: '/game', name: 'game', component: page('game.vue') },
   { path: '/gallery', name: 'gallery', component: page('gallery.vue') },
-  { path: '/ranking', name: 'ranking', component: page('ranking.vue') },
+  { path: '/leaderboard', name: 'leaderboard', component: page('ranking.vue') },
   { path: '/upload', name: 'upload', component: page('upload.vue') },
 
   { path: '/gallery/details/:id', name: 'details', component: page('details.vue') },

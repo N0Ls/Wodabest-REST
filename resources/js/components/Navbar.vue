@@ -58,11 +58,11 @@
                         </li>
                         <li v-if="user" class="nav-item">
                             <router-link
-                                :to="{ name: 'ranking' }"
+                                :to="{ name: 'leaderboard' }"
                                 class="nav-link"
                                 active-class="active"
                             >
-                                {{ $t("ranking") }}
+                                {{ $t("leaderboard") }}
                             </router-link>
                         </li>
                         <li v-if="user" class="nav-item">
