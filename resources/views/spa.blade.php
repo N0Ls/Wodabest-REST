@@ -16,9 +16,7 @@ $config = [
 
   <title>{{ config('app.name') }}</title>
 
-  {{-- Style (static load) --}}
-  <link rel="stylesheet" type="text/css" href="/dist/css/app.css">
-  <link rel=" stylesheet" type="text/css" href="/dist/css/style.css">
+  <link rel="stylesheet" href="{{ mix('dist/css/app.css') }}">
 </head>
 
 <body>
