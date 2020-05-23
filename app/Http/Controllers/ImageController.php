@@ -148,7 +148,7 @@ class ImageController extends Controller
     
                 $project = new Image;
     
-                $category_id =  Category::where('name', $request->category)->select('id')->first()['id'];
+                $category_id =  Category::where('slug', $request->category)->select('id')->first()['id'];
     
                 $project->user_id = $request->user_id;
                 $project->category_id = $category_id;

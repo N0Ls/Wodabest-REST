@@ -143,7 +143,6 @@ export const actions = {
       .then(response => {
         context.commit(types.ADD_PROJECT, response.data);
         context.dispatch("updateFilter", "all");
-        //context.dispatch("retrieveProjects");
       })
       .catch(error => {
         console.log(error);
