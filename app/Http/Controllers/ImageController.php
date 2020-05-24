@@ -18,7 +18,7 @@ class ImageController extends Controller
     {
         try
         {
-            $images = Image::orderBY('created_at', 'desc')->get();
+            $images = Image::latest()->get();
         
             return response()->json($images);
         }

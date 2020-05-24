@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon as Carbon;
 
 class ImagesTableSeeder extends Seeder
 {
@@ -43,7 +44,9 @@ class ImagesTableSeeder extends Seeder
                             'category_id' => rand(1, 7),
                             'title' => $title,
                             'filename' => $filename,
-                            'description' => Str::random(50)
+                            'description' => Str::random(50),
+                            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
                         ]);
                     }
                 }
