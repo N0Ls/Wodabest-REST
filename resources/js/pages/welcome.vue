@@ -48,7 +48,7 @@ export default {
 
     data: () => ({
         appName: window.config.appName,
-        links: ["gallery", "ranking", "upload"],
+        links: ["gallery", "leaderboard", "upload"],
         technologies: ["bootstrap", "vue", "vuex", "vue-router", "laravel"]
     }),
 
