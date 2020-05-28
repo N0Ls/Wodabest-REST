@@ -5,8 +5,8 @@
         >
             <img
                 :src="'/img/upload/' + project.filename"
-                class="img-fluid"
                 :alt="project.description"
+                class="img-fluid"
             />
             <div class="overlay-work bg-dark"></div>
             <div class="icons text-center">
@@ -47,7 +47,7 @@
                     @click="removeProject(project.id)"
                     class="d-inline-flex mt-3 text-left"
                 >
-                    <a class="btn btn-icon"><img src="img/icons/trash.svg"/></a>
+                    <a class="btn btn-icon"><img src="img/icons/trash.svg" alt="Trash icon" /></a>
                 </div>
                 <div class="d-inline-flex mt-3 text-left align-items-center">
                     <a

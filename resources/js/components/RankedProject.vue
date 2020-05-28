@@ -7,8 +7,8 @@
             <div class="media align-items-center">
                 <a href="#" class="avatar mr-3">
                     <img
-                        :alt="description"
                         :src="'/img/upload/' + filename"
+                        :alt="description"
                     />
                 </a>
                 <div class="media-body">

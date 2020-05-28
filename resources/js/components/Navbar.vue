@@ -85,6 +85,7 @@
                             >
                                 <img
                                     :src="user.photo_url"
+                                    :alt="user.name + ' avatar'"
                                     class="rounded-circle profile-photo mr-1"
                                 />
                                 {{ user.name }}
