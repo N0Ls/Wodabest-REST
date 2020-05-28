@@ -118,5 +118,6 @@
   "select": "Select an image",
   "selected": "Image successfully selected",
   "fileSize": "The file size exceeds the limit",
-  "fileType": "This file type is not supported"
+  "fileType": "This file type is not supported",
+  "browser_issue": "Depending on your browser, the OAuth authentication may not be successful."
 }
