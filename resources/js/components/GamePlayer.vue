@@ -20,6 +20,7 @@
                     <img
                         :src="'/img/upload/' + filename"
                         class="img-fluid rounded work-image"
+                        :alt="this.title"
                     />
                 </button>
                 <div class="content d-flex align-items-center pt-3">

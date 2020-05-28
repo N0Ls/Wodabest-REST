@@ -6,12 +6,12 @@
             <img
                 :src="'/img/upload/' + project.filename"
                 class="img-fluid"
-                alt="work-image"
+                :alt="project.description"
             />
             <div class="overlay-work bg-dark"></div>
             <div class="icons text-center">
                 <a @click="goTodetail(id)" class="btn btn-icon"
-                    ><img src="img/icons/magnifying-glass.svg"
+                    ><img src="img/icons/magnifying-glass.svg" alt="Magnifying glass icon"
                 /></a>
             </div>
             <div class="content p-3">
@@ -54,10 +54,10 @@
                         v-if="isLiked"
                         @click="unlikeProject"
                         class="btn btn-icon"
-                        ><img src="img/icons/thumb-up-full.svg"
+                        ><img src="img/icons/thumb-up-full.svg" alt="Full thumb up icon"
                     /></a>
                     <a v-else @click="likeProject" class="btn btn-icon"
-                        ><img src="img/icons/thumb-up.svg"
+                        ><img src="img/icons/thumb-up.svg" alt="Thumb up icon"
                     /></a>
                     <span class="text-white small ml-0">{{
                         countProjectLikes

@@ -7,7 +7,7 @@
             <div class="media align-items-center">
                 <a href="#" class="avatar mr-3">
                     <img
-                        alt="Image placeholder"
+                        :alt="description"
                         :src="'/img/upload/' + filename"
                     />
                 </a>
@@ -59,7 +59,7 @@
                     aria-haspopup="true"
                     aria-expanded="false"
                 >
-                    <img src="img/icons/ellipsis.svg" />
+                    <img src="img/icons/ellipsis.svg" alt="Ellipsis icon" />
                 </a>
                 <div
                     class="dropdown-menu dropdown-menu-right dropdown-menu-arrow"
