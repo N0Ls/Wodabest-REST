@@ -148,7 +148,7 @@ export default {
             return this.$store.getters["games/count"];
         },
         random() {
-            return this.$store.getters["projects/randomProject"];
+            return this.$store.getters["projects/randomProjects"];
         }
     },
 
