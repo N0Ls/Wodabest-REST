@@ -29,6 +29,12 @@ export const getters = {
   project(state) {
     return state.project;
   },
+  randomProject(state) {
+    const randomProjects = [];
+    for(let i = 0; i < 3; i++)
+      randomProjects.push(state.projects[Math.floor(Math.random() * state.projects.length)]);
+    return randomProjects;
+  },
   projectsFiltered(state, getters, rootState, rootGetters) {
     let projectsFiltered = switchFilter(
       state.filter,
