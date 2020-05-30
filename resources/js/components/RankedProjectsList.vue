@@ -60,7 +60,6 @@ export default {
 
     created() {
         this.$store.dispatch("users/retrieveUsers");
-        //this.$store.dispatch("ranking/retrieveTopProjects");
         this.retrieveTopProjects();
     },
 
@@ -76,9 +75,12 @@ export default {
     methods: {
         async retrieveTopProjects() {
             const { data } = await axios.post("/api/projects/ranking/" + this.$store.getters["ranking/filter"]);
-            console.log(data);
             this.loading = false;
             this.$store.dispatch("ranking/feedTopProjects", data);
+        },
+        // Utils (simulate slow async)
+        async stall(stallTime = 1000) {
+            await new Promise(resolve => setTimeout(resolve, stallTime));
         }
     }
 };

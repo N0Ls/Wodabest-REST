@@ -3,7 +3,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-12 order-2 order-lg-1">
-                    <div class="row align-items-center">
+                    <div v-if="loading" class="container text-center mt-5 mb-5">
+                        <div class="group">
+                            <div class="bigSqr">
+                                <div class="square first"></div>
+                                <div class="square second"></div>
+                                <div class="square third"></div>
+                                <div class="square fourth"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div v-else class="row align-items-center">
                         <div
                             class="col-lg-6 col-md-6 mt-4 mt-lg-0 pt-2 pt-lg-0"
                         >
@@ -124,13 +134,15 @@
 </template>
 
 <script>
+import axios from "axios";
 import { mapGetters } from "vuex";
 
 export default {
     middleware: "auth",
 
     data: () => ({
-        name: window.config.appName
+        name: window.config.appName,
+        loading: true
     }),
 
     computed: {
@@ -155,8 +167,20 @@ export default {
     created() {
         this.$store.dispatch("users/retrieveUsers");
         this.$store.dispatch("categories/retrieveCategories");
-        this.$store.dispatch("projects/retrieveProjects");
         this.$store.dispatch("games/retrieveGames");
+        this.retrieveProjects();
+    },
+
+    methods: {
+        async retrieveProjects() {
+            const { data } = await axios.get("/api/projects");
+            this.loading = false;
+            this.$store.dispatch("projects/feedProjects", data);
+        },
+        // Utils (simulate slow async)
+        async stall(stallTime = 2000) {
+            await new Promise(resolve => setTimeout(resolve, stallTime));
+        }
     },
 
     metaInfo() {
