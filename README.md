@@ -19,10 +19,12 @@
 * [About the Project](#about-the-project)
   * [Built With](#built-with)
   * [Features](#features)
+* [Architecture diagram](#architecture-diagram)
 * [Getting Started](#getting-started)
 * [Usage](#usage)
     * [Development](#development)
     * [Socialite](#socialite)
+    * [API routes](#api-routes)
 * [License](#license)
 * [Contributors](#contributors)
 
