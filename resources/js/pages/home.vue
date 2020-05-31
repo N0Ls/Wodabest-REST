@@ -4,14 +4,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-12 order-2 order-lg-1">
                     <div v-if="loading" class="container text-center mt-5 mb-5">
-                        <div class="group">
-                            <div class="bigSqr">
-                                <div class="square first"></div>
-                                <div class="square second"></div>
-                                <div class="square third"></div>
-                                <div class="square fourth"></div>
-                            </div>
-                        </div>
+                        <loader />
                     </div>
                     <div v-else class="row align-items-center">
                         <div

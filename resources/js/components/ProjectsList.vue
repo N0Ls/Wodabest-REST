@@ -24,14 +24,7 @@
         </div>
 
         <div v-if="loading" class="container text-center mt-5 mb-5">
-            <div class="group">
-                <div class="bigSqr">
-                    <div class="square first"></div>
-                    <div class="square second"></div>
-                    <div class="square third"></div>
-                    <div class="square fourth"></div>
-                </div>
-            </div>
+            <loader />
         </div>
 
         <div v-else>
