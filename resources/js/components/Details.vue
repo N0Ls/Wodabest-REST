@@ -1,5 +1,11 @@
 <template>
     <div class="col-lg-6 col-md-6 col-12 order-md-2 order-1">
+        <div v-if="user.id == owner" class="d-flex flex-row align-items-center">
+            <span class="badge badge-dot">
+                <i class="bg-success"></i>
+            </span>
+            <p class="mt-3 ml-3 text-muted text-sm">{{ $t('belongs') }}</p>
+        </div>
         <div class="work-details rounded shadow-large p-4">
             <h5 class="title border-bottom pb-3 mb-3">Project details :</h5>
             <dl class="row mb-0">
@@ -64,7 +70,7 @@
             <p
                 v-if="!editingDescription"
                 @dblclick="editProjectDescription"
-                class="text-muted mb-0"
+                class="mb-0"
             >
                 {{ description }}
             </p>
@@ -81,7 +87,7 @@
             />
         </div>
         <div v-else class="mt-4 pt-2">
-            <p class="text-muted mb-0">" {{ description }} "</p>
+            <p class="mb-0">{{ description }}</p>
         </div>
     </div>
 </template>
