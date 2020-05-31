@@ -80,6 +80,7 @@ export default {
 
     methods: {
         async update() {
+            this.$emit('game-played');
             await this.$store.dispatch("games/updateScores", {
                 winner: this.form.winner,
                 loser: this.form.loser
