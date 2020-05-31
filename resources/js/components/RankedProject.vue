@@ -27,12 +27,9 @@
                         v-focus
                     />
                 </div>
-                <div
-                        v-else
-                        class="media-body"
-                    >
-                        <span class="mb-0 text-sm">{{ title }}</span>
-                    </div>
+                <div v-else class="media-body">
+                    <span class="mb-0 text-sm">{{ title }}</span>
+                </div>
             </div>
         </td>
         <td class="text-center">
