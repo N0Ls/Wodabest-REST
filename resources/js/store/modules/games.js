@@ -90,7 +90,6 @@ export const actions = {
                         }
                     );
                 });
-                //context.dispatch("retrievePlayers");
             })
             .catch(error => {
                 console.log(error);
