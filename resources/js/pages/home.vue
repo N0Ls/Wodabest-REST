@@ -76,7 +76,14 @@
                         </p>
 
                         <div class="row justify-content-center" id="counter">
-                            <div class="col-md-4 col-6 mt-4">
+                            <div
+                                v-if="loading"
+                                class="container text-center mt-5 mb-5"
+                            >
+                                <loader />
+                            </div>
+
+                            <div v-if="!loading" class="col-md-4 col-6 mt-4">
                                 <div class="counter-box text-center">
                                     <h3 class="counter-value mt-3">
                                         {{ countUsers }}
@@ -87,7 +94,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-4 col-6 mt-4">
+                            <div v-if="!loading" class="col-md-4 col-6 mt-4">
                                 <div class="counter-box text-center">
                                     <h3 class="counter-value mt-3">
                                         {{ countProjects }}
@@ -98,7 +105,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-4 col-6 mt-4">
+                            <div v-if="!loading" class="col-md-4 col-6 mt-4">
                                 <div class="counter-box text-center">
                                     <h3 class="counter-value mt-3">
                                         {{ countGames }}
@@ -109,7 +116,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 mb-4 text-center mt-4">
+                        <div v-if="!loading" class="col-12 mb-4 text-center mt-4">
                             <router-link
                                 :to="{ name: 'game' }"
                                 class="navbar-brand"
@@ -169,10 +176,6 @@ export default {
             const { data } = await axios.get("/api/projects");
             this.loading = false;
             this.$store.dispatch("projects/feedProjects", data);
-        },
-        // Utils (simulate slow async)
-        async stall(stallTime = 2000) {
-            await new Promise(resolve => setTimeout(resolve, stallTime));
         }
     },
 
